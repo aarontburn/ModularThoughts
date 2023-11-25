@@ -1,0 +1,16 @@
+.root {
+    /*  Dark Color Theme    */
+    -fx-dark-background: rgb(60, 63, 65);
+    -fx-default-text-color: rgb(209, 209, 209);
+
+
+
+
+}
+
+* {
+    -fx-background: -fx-dark-background;
+    -fx-text-fill: -fx-default-text-color;
+}
+
+

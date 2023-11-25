@@ -1,0 +1,25 @@
+init process:
+    Register all active modules
+        - Maybe using json?
+
+    Start GUIHandler on view-base
+    add all active modules gui to list of panes
+    add all panes to includePane and set them all invis
+
+
+
+
+
+    overridden homeGUI's initialize sets it as visible
+
+
+
+
+
+
+
+
+
+
+
+setting lazy init: only initialize modules once they are clicked on
