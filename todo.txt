@@ -16,10 +16,22 @@ init process:
 
 
 
+Settings:
+    Home: This will be in charge of general program settings
+        - Lazy Initialization: only initialize modules once they are clicked on
+        - Color scheme?
 
 
 
 
 
 
-setting lazy init: only initialize modules once they are clicked on
+
+
+
+
+Module Specific:
+    Must contain a class extending Module
+        - Must have a corresponding GUI class extending ModuleGUI
+
+    JavaFX node ID must start with the abbreviated module name (ex. HomeModule components will start with "HMdateLabel" )

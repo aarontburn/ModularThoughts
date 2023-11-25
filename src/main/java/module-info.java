@@ -2,6 +2,7 @@ module com.aarontburn.modularthoughts {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires com.google.gson;
 
 
     opens com.aarontburn.modularthoughts to javafx.fxml;

@@ -2,6 +2,15 @@
 
 
 
+* {
+    -fx-background: black;
+}
 
+
+
+.label {
+    -fx-text-fill: white;
+
+}
 
 

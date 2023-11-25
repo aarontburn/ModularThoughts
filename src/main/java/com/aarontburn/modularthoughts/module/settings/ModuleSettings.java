@@ -1,4 +1,4 @@
-package com.aarontburn.modularthoughts.module;
+package com.aarontburn.modularthoughts.module.settings;
 
 import com.aarontburn.modularthoughts.module.settings.Setting;
 
