@@ -3,6 +3,8 @@ package com.aarontburn.modularthoughts.home_module;
 import com.aarontburn.modularthoughts.Helper;
 import com.aarontburn.modularthoughts.Logger;
 import com.aarontburn.modularthoughts.module.Module;
+import com.aarontburn.modularthoughts.module.settings.ModuleSettings;
+import com.aarontburn.modularthoughts.module.settings.NumericSetting;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -30,6 +32,13 @@ public class HomeModule extends Module {
 
     @Override
     public void registerSettings() {
+        final ModuleSettings settings = getSettings();
+        settings.addSetting(new NumericSetting("Full Date Scale"));
+        settings.addSetting(new NumericSetting("Abbreviated Date Scale"));
+        settings.addSetting(new NumericSetting("Standard Time Scale"));
+        settings.addSetting(new NumericSetting("Military Time Scale"));
+
+
         // Window size
         // etc
     }
@@ -82,7 +91,7 @@ public class HomeModule extends Module {
         }
 
         private void updateTime() {
-            currentDateTime = currentDateTime.plusSeconds(1);
+            currentDateTime = LocalDateTime.now();
             timePayload[0] = currentDateTime.format(STANDARD_TIME_FORMATTER);
             timePayload[1] = currentDateTime.format(MILITARY_TIME_FORMATTER);
             notifyListeners(ChangeEvents.TIME_CHANGED.name(), timePayload);

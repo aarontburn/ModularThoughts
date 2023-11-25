@@ -18,19 +18,12 @@ public class HomeGUI extends ModuleGUI {
         super(HOME_FXML_PATH);
     }
 
-
-
     @Override
     public void initialize() {
         dateLabel = (Label) lookup("HMdateLabel");
         abbreviatedDateLabel = (Label) lookup("HMabbreviatedDateLabel");
         standardTimeLabel = (Label) lookup("HMstandardTimeLabel");
         militaryTimeLabel = (Label) lookup("HMmilitaryTimeLabel");
-    }
-
-    @Override
-    public void show() {
-        super.show();
     }
 
     @Override

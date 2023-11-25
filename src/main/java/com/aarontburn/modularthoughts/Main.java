@@ -1,6 +1,7 @@
 package com.aarontburn.modularthoughts;
 
 
+import com.aarontburn.modularthoughts.handlers.ModuleController;
 import javafx.application.Application;
 
 public class Main {

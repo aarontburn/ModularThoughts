@@ -1,8 +1,8 @@
 package com.aarontburn.modularthoughts.module;
 
-import com.aarontburn.modularthoughts.GUIHandler;
+import com.aarontburn.modularthoughts.handlers.GUIHandler;
 import com.aarontburn.modularthoughts.Logger;
-import com.aarontburn.modularthoughts.ModuleController;
+import com.aarontburn.modularthoughts.handlers.ModuleController;
 import com.aarontburn.modularthoughts.module.change_reporter.ModuleListener;
 import javafx.scene.Node;
 

@@ -9,13 +9,8 @@ public abstract class Setting<T> {
     private T value;
 
 
-
     protected Setting(final String theSettingName) {
         this.settingName = theSettingName;
-    }
-
-    public void setDescription(final String theDescription) {
-        this.settingDescription = theDescription;
     }
 
     public String getSettingName() {
@@ -24,6 +19,10 @@ public abstract class Setting<T> {
 
     public String getDescription() {
         return this.settingDescription;
+    }
+
+    public void setDescription(final String theDescription) {
+        this.settingDescription = theDescription;
     }
 
     public Class<?> getSettingType() {
@@ -45,7 +44,6 @@ public abstract class Setting<T> {
 
         value = newValue;
     }
-
 
 
 }

@@ -1,6 +1,6 @@
 package com.aarontburn.modularthoughts.module;
 
-import com.aarontburn.modularthoughts.GUIHandler;
+import com.aarontburn.modularthoughts.handlers.GUIHandler;
 import com.aarontburn.modularthoughts.module.change_reporter.ModuleChangeReporter;
 import com.aarontburn.modularthoughts.module.change_reporter.ModuleListener;
 import com.aarontburn.modularthoughts.module.settings.ModuleSettings;
@@ -9,7 +9,7 @@ public abstract class Module {
 
     private final ModuleChangeReporter moduleChangeReporter = new ModuleChangeReporter();
 
-    private final ModuleSettings moduleSettings = new ModuleSettings();
+    private final ModuleSettings moduleSettings;
 
     private final ModuleGUI moduleGUI;
 
@@ -21,13 +21,21 @@ public abstract class Module {
     public Module(final String moduleName, final ModuleGUI correspondingGUI) {
         this.moduleGUI = correspondingGUI;
         this.moduleName = moduleName;
+
+        moduleSettings= new ModuleSettings(this);
+        registerSettings();
+
+
         addListener(correspondingGUI);
         correspondingGUI.setReferenceModule(this);
-        GUIHandler.addGui(correspondingGUI);
     }
 
 
     public abstract void registerSettings();
+
+    public ModuleSettings getSettings() {
+        return this.moduleSettings;
+    }
 
     public final void addListener(final ModuleListener theListener) {
         moduleChangeReporter.addListener(theListener);

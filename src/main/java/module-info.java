@@ -13,4 +13,6 @@ module com.aarontburn.modularthoughts {
     opens com.aarontburn.modularthoughts.module.change_reporter to javafx.fxml;
     exports com.aarontburn.modularthoughts.module.settings;
     opens com.aarontburn.modularthoughts.module.settings to javafx.fxml;
+    exports com.aarontburn.modularthoughts.handlers;
+    opens com.aarontburn.modularthoughts.handlers to javafx.fxml;
 }
