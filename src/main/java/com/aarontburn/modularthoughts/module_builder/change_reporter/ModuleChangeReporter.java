@@ -1,4 +1,4 @@
-package com.aarontburn.modularthoughts.module.change_reporter;
+package com.aarontburn.modularthoughts.module_builder.change_reporter;
 
 
 import java.util.ArrayList;

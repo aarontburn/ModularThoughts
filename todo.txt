@@ -14,7 +14,8 @@ init process:
 
 
 
-
+To-do:
+    - M
 
 Settings:
     Home: This will be in charge of general program settings

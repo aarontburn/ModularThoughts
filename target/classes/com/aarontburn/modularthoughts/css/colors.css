@@ -2,17 +2,15 @@
 
 .root * {
     /*  Dark Color Theme    */
-    -fx-dark-background: black;
-    -fx-default-text-color: rgb(209, 209, 209);
+    -fx-default-background-color: black;
 
-
-
-
+    -fx-accent-color: cyan;
     -fx-font-family: "Yu Gothic Light";
-
+    -fx-text-fill: white;
 
 
 }
+
 
 
 

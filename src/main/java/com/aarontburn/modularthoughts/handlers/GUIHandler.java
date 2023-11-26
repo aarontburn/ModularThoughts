@@ -3,7 +3,7 @@ package com.aarontburn.modularthoughts.handlers;
 import com.aarontburn.modularthoughts.Helper;
 import com.aarontburn.modularthoughts.Logger;
 import com.aarontburn.modularthoughts.Main;
-import com.aarontburn.modularthoughts.module.ModuleGUI;
+import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -77,7 +77,6 @@ public class GUIHandler {
     }
 
     public void addGui(final ModuleGUI gui) {
-        System.out.println("adding " + gui.getFxmlPath());
         try {
             final Pane pane = new FXMLLoader(Main.class.getResource(gui.getFxmlPath())).load();
             pane.setVisible(false);
@@ -97,11 +96,9 @@ public class GUIHandler {
         } catch (final IOException e) {
             Logger.log(e);
         }
-        System.out.println(PANE_MAP);
     }
 
     public static void swapToGui(final ModuleGUI gui) {
-        System.out.println("swapping to " + gui.getFxmlPath());
         for (final String path : PANE_MAP.keySet()) {
             PANE_MAP.get(path).setVisible(false);
         }
@@ -109,7 +106,11 @@ public class GUIHandler {
         if (!gui.isInitialized()) {
             gui.getModule().initialize();
         }
-        PANE_MAP.get(gui.getFxmlPath()).setVisible(true);
+
+        final Node node = PANE_MAP.get(gui.getFxmlPath());
+
+        node.setVisible(true);
+        node.requestFocus();
     }
 
 

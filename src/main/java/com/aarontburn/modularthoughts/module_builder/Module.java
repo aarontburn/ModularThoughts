@@ -1,9 +1,7 @@
-package com.aarontburn.modularthoughts.module;
+package com.aarontburn.modularthoughts.module_builder;
 
-import com.aarontburn.modularthoughts.handlers.GUIHandler;
-import com.aarontburn.modularthoughts.module.change_reporter.ModuleChangeReporter;
-import com.aarontburn.modularthoughts.module.change_reporter.ModuleListener;
-import com.aarontburn.modularthoughts.module.settings.ModuleSettings;
+import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleChangeReporter;
+import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleListener;
 
 public abstract class Module {
 
@@ -73,6 +71,8 @@ public abstract class Module {
     public void onGuiShown() {
         // Do nothing by default
     }
+
+    public abstract void refreshSettings();
 
     /**
      * Overrideable method to stop a module and GUI. This is useful to shut down threads inside other modules.

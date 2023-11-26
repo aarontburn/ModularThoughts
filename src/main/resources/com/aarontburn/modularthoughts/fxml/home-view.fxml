@@ -15,18 +15,18 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="1080.0" prefWidth="825.0">
+            <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1904.0">
                <children>
                   <VBox prefHeight="260.0" prefWidth="300.0">
                      <children>
                         <Label fx:id="HMdateLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Wednesday, September 23, 2023">
                            <font>
-                              <Font size="38.0" />
+                              <Font size="40.0" />
                            </font>
                         </Label>
                         <Label fx:id="HMabbreviatedDateLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="(9/23/2023)">
                            <font>
-                              <Font size="29.0" />
+                              <Font size="30.0" />
                            </font>
                         </Label>
                         <Label alignment="CENTER" maxWidth="1.7976931348623157E308">
@@ -36,12 +36,12 @@
                         </Label>
                         <Label fx:id="HMstandardTimeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="11:59:59">
                            <font>
-                              <Font size="89.0" />
+                              <Font size="90.0" />
                            </font>
                         </Label>
                         <Label fx:id="HMmilitaryTimeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="23:59:59">
                            <font>
-                              <Font size="29.0" />
+                              <Font size="30.0" />
                            </font>
                         </Label>
                      </children>

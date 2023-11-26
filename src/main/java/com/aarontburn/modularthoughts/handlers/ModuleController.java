@@ -1,14 +1,18 @@
 package com.aarontburn.modularthoughts.handlers;
 
 
-import com.aarontburn.modularthoughts.home_module.HomeModule;
-import com.aarontburn.modularthoughts.module.Module;
-import com.aarontburn.modularthoughts.settings_module.SettingsModule;
+import com.aarontburn.modularthoughts.Logger;
+import com.aarontburn.modularthoughts.built_ins.modules.home_module.HomeModule;
+import com.aarontburn.modularthoughts.module_builder.Module;
+import com.aarontburn.modularthoughts.built_ins.modules.settings_module.SettingsModule;
+import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
+import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ModuleController extends Application {
@@ -25,21 +29,15 @@ public class ModuleController extends Application {
 
     @Override
     public void start(final Stage stage) throws Exception {
+        System.setProperty("prism.lcdtext", "true");
         // Boot up the settings module
         settingsModule = new SettingsModule();
 
-        // Figure out what modules are active
-        registerModule(settingsModule);
-        registerModule(new HomeModule());
-
-        // Register each module's setting in the settings module
-        settingsModule.addSettingsModule(
-                moduleList.stream().map(Module::getSettings)
-                        .collect(Collectors.toList()));
+        registerModules();
+        checkSettings();
 
         // start the gui, but don't display the window yet
         GUI_HANDLER = new GUIHandler(stage);
-
         GUI_HANDLER.setOnExit(() -> {
             for (final Module module : moduleList) {
                 module.stop();
@@ -50,6 +48,8 @@ public class ModuleController extends Application {
             GUI_HANDLER.addGui(module.getGUI());
         }
 
+        GUI_HANDLER.show();
+        settingsModule.initialize();
 
         for (final Module m : moduleList) {
             if (m.getClass() == HomeModule.class) {
@@ -57,41 +57,51 @@ public class ModuleController extends Application {
             }
         }
 
-        GUI_HANDLER.show();
+    }
+
+    private void registerModules() {
+        Logger.log("BOOT: Registering modules...");
+        // Figure out what modules are active
+        registerModule(new HomeModule());
+        registerModule(settingsModule);
     }
 
     private void registerModule(final Module module) {
         moduleList.add(module);
     }
 
+    private void checkSettings() {
+        Logger.log("BOOT: Checking settings...");
 
-//    private void parseEnabledModulesJson() {
-//
-//        final String jsonFilePath
-//                = Objects.requireNonNull(Main.class.getResource("enabled-modules.json")).getFile();
-//
-//        try (final Reader reader = new FileReader(jsonFilePath)) {
-//            final Type type = new TypeToken<Map<String, Object>>() {}.getType();
-//            final Map<String, Object> map = new Gson().fromJson(reader, type);
-//
-//
-//            for (final String key : map.keySet()) {
-//                final String s = ((String) map.get(key)).replace(" ", "");
-//                final String[] modules = s.split(",");
-//
-//                for (final String moduleString : modules) {
-//                    moduleList.add(Class.forName(moduleString));
-//
-//                }
-//            }
-//
-//        } catch (IOException e) {
-//            Logger.log(e);
-//        } catch (ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//        System.out.println(moduleList);
-//
-//
-//    }
+        // Check settings for each module
+        for (final Module module : moduleList) {
+            final Map<String, Object> settingsMap = StorageHandler.readSettingsFromModuleStorage(module);
+
+            if (settingsMap == null) {
+                continue;
+            }
+            final ModuleSettings moduleSettings = module.getSettings();
+
+            for (final String settingName : settingsMap.keySet()) {
+                final Setting<?> setting = moduleSettings.findSettingByName(settingName);
+                if (setting == null) {
+                    Logger.log("WARNING: Invalid setting name: '" + settingName + "' found.");
+                    continue;
+                }
+                setting.setValue(settingsMap.get(settingName));
+            }
+            StorageHandler.writeSettingsToModuleStorage(module);
+
+        }
+
+
+        // Register each module's setting in the settings module
+        settingsModule.addModuleSettings(
+                moduleList.stream()
+                        .map(Module::getSettings)
+                        .collect(Collectors.toList()));
+
+    }
+
+
 }

@@ -1,16 +1,8 @@
 @import url("colors.css");
 
 
-
 * {
     -fx-background: black;
-}
-
-
-
-.label {
-    -fx-text-fill: white;
-
 }
 
 

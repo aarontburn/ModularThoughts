@@ -1,45 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <stylesheets>
-      <URL value="@../css/colors.css" />
-      <URL value="@../css/home-styles.css" />
-   </stylesheets>
    <children>
       <SplitPane dividerPositions="0.25" layoutX="562.0" layoutY="240.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+            <ScrollPane fx:id="SMleftScrollPane" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <VBox fx:id="SMsettingsTabGroup" layoutX="228.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox fx:id="SMsettingsTabGroup" layoutX="228.0" prefHeight="200.0" prefWidth="100.0" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                              <HBox alignment="CENTER">
                                  <children>
-                                    <Label alignment="CENTER" text="General">
+                                    <Label alignment="CENTER" text="Home">
                                        <font>
-                                          <Font size="39.0" />
+                                          <Font size="28.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </HBox>
                            </children>
+                           <padding>
+                              <Insets top="12.0" />
+                           </padding>
                         </VBox>
                      </children>
                   </AnchorPane>
               </content>
             </ScrollPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <ScrollPane fx:id="SMrightScrollPane" fitToWidth="true" prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <VBox fx:id="SMsettingsList" spacing="24.0">
+                     <padding>
+                        <Insets left="16.0" right="16.0" top="12.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" spacing="24.0">
+                           <children>
+                              <TextField alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="50.0" prefWidth="115.0" text="40">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </TextField>
+                              <VBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <HBox spacing="24.0">
+                                       <children>
+                                          <Label text="↻">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Full Date Font Size">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <Label text="Adjusts the font size of the full date (ex, Monday, January 1st, 2000)">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="24.0">
+                           <children>
+                              <TextField alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="30.0" prefWidth="115.0" text="30">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="↻">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label text="Abbreviated Date Font Size">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="24.0">
+                           <children>
+                              <TextField alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="30.0" prefWidth="115.0" text="90">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="↻">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Standard Time Font Size">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="24.0">
+                           <children>
+                              <TextField alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="30.0" prefWidth="115.0" text="40">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="↻">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Military Time Font Size">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="24.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="115.0">
+                                 <children>
+                                    <Label prefHeight="30.0" text="ON">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="30.0" style="-fx-text-fill: cyan;" text="/">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="30.0" style="-fx-text-fill: gray;" text="OFF">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </HBox>
+                              <Label text="↻">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Example Boolean Setting">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Pane prefWidth="139.0">
+                                 <children>
+                                    <Label layoutX="105.0" layoutY="48.0" text="↻">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children></Pane>
+                              <VBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="625.0" spacing="8.0">
+                                 <children>
+                                    <HBox alignment="BOTTOM_LEFT" spacing="24.0">
+                                       <children>
+                                          <Label text="Example String Setting">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Example description for this String setting.">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <TextField maxHeight="1.7976931348623157E308" prefHeight="46.0" prefWidth="700.0" text="https://google.com/">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
          </items>
       </SplitPane>
    </children>
+   <stylesheets>
+      <URL value="@../css/colors.css" />
+      <URL value="@../css/settings-styles.css" />
+   </stylesheets>
 </AnchorPane>

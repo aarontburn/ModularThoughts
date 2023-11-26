@@ -1,10 +1,12 @@
-package com.aarontburn.modularthoughts.home_module;
+package com.aarontburn.modularthoughts.built_ins.modules.home_module;
 
 import com.aarontburn.modularthoughts.Helper;
 import com.aarontburn.modularthoughts.Logger;
-import com.aarontburn.modularthoughts.module.Module;
-import com.aarontburn.modularthoughts.module.settings.ModuleSettings;
-import com.aarontburn.modularthoughts.module.settings.NumericSetting;
+import com.aarontburn.modularthoughts.built_ins.settings.types.BooleanSetting;
+import com.aarontburn.modularthoughts.built_ins.settings.types.NumericSetting;
+import com.aarontburn.modularthoughts.built_ins.settings.types.StringSetting;
+import com.aarontburn.modularthoughts.module_builder.Module;
+import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -24,23 +26,72 @@ public class HomeModule extends Module {
         clock = new HomeClock();
     }
 
+    public enum ChangeEvents {
+        DATE_CHANGED, TIME_CHANGED, APPLY_SETTINGS
+    }
+
     @Override
     public void initialize() {
         super.initialize();
         clock.start();
+
+        refreshSettings();
+    }
+
+    @Override
+    public void refreshSettings() {
+        notifyListeners(ChangeEvents.APPLY_SETTINGS.name(), null);
     }
 
     @Override
     public void registerSettings() {
         final ModuleSettings settings = getSettings();
-        settings.addSetting(new NumericSetting("Full Date Scale"));
-        settings.addSetting(new NumericSetting("Abbreviated Date Scale"));
-        settings.addSetting(new NumericSetting("Standard Time Scale"));
-        settings.addSetting(new NumericSetting("Military Time Scale"));
+
+        settings.addSetting(new NumericSetting(this)
+                .setName("Full Date Font Size")
+                .setDescription("Adjusts the font size of the full date display (ex. Sunday, January 1st, 2023).")
+                .setDefault(40.0)
+                .setBoundNodeID("HMdateLabel"));
 
 
-        // Window size
-        // etc
+        settings.addSetting(new NumericSetting(this)
+                .setName("Abbreviated Date Font Size")
+                .setDescription("Adjusts the font size of the abbreviated date display (ex. 1/01/2023).")
+                .setDefault(30.0)
+                .setBoundNodeID("HMabbreviatedDateLabel"));
+
+
+        settings.addSetting(new NumericSetting(this)
+                .setName("Standard Time Font Size")
+                .setDescription("Adjusts the font size of the standard time display (ex. 11:59:59 PM).")
+                .setDefault(90.0)
+                .setBoundNodeID("HMstandardTimeLabel"));
+
+
+        settings.addSetting(new NumericSetting(this)
+                .setName("Military Time Font Size")
+                .setDescription("Adjusts the font size of the military time display (ex. 23:59:49).")
+                .setDefault(30.0)
+                .setBoundNodeID("HMmilitaryTimeLabel"));
+
+
+        settings.addSetting(new BooleanSetting(this)
+                .setName("Test Boolean")
+                .setDescription("A Boolean Setting")
+                .setDefault(false));
+
+        settings.addSetting(new StringSetting(this)
+                .setName("Some sort of URL")
+                .setDescription("Use this URL to do something.")
+                .setDefault("https://google.com/"));
+
+
+        settings.addSetting(new StringSetting(this)
+                .setName("Font color")
+                .setDescription("In hex.")
+                .setDefault("#FFFFFF"));
+
+
     }
 
     @Override
@@ -48,6 +99,8 @@ public class HomeModule extends Module {
         super.stop();
         clock.stop();
     }
+
+
 
     private class HomeClock {
         private static final DateTimeFormatter STANDARD_TIME_FORMATTER = DateTimeFormatter.ofPattern("h:mm:ss a");
@@ -98,7 +151,6 @@ public class HomeModule extends Module {
         }
 
         private void updateDate() {
-            Logger.log("updating date");
             this.currentDateTime = LocalDateTime.now();
 
             datePayload[0] = currentDateTime.format(FULL_DATE_FORMATTER)
@@ -116,7 +168,5 @@ public class HomeModule extends Module {
         }
     }
 
-    public enum ChangeEvents {
-        DATE_CHANGED, TIME_CHANGED
-    }
+
 }

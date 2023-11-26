@@ -1,9 +1,9 @@
-package com.aarontburn.modularthoughts.module;
+package com.aarontburn.modularthoughts.module_builder;
 
 import com.aarontburn.modularthoughts.handlers.GUIHandler;
 import com.aarontburn.modularthoughts.Logger;
 import com.aarontburn.modularthoughts.handlers.ModuleController;
-import com.aarontburn.modularthoughts.module.change_reporter.ModuleListener;
+import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleListener;
 import javafx.scene.Node;
 
 public abstract class ModuleGUI implements ModuleListener {
