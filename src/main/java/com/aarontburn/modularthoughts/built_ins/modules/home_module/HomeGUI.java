@@ -17,11 +17,9 @@ import java.util.Map;
 public class HomeGUI extends ModuleGUI {
 
     private static final String HOME_FXML_PATH = "fxml/home-view.fxml";
-
+    private final Map<String, Node> boundNodesByID = new HashMap<>();
     private Label dateLabel, abbreviatedDateLabel;
     private Label standardTimeLabel, militaryTimeLabel;
-
-    private final Map<String, Node> boundNodesByID = new HashMap<>();
 
     public HomeGUI() {
         super(HOME_FXML_PATH);

@@ -56,11 +56,20 @@
                               </TextField>
                               <VBox alignment="CENTER_LEFT">
                                  <children>
-                                    <Label text="Full Date Font Size">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
+                                    <HBox spacing="24.0">
+                                       <children>
+                                          <Label text="↻">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Full Date Font Size">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                     <Label text="Adjusts the font size of the full date (ex, Monday, January 1st, 2000)">
                                        <font>
                                           <Font size="16.0" />
@@ -77,6 +86,11 @@
                                     <Font size="24.0" />
                                  </font>
                               </TextField>
+                              <Label text="↻">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
                               <VBox alignment="CENTER_LEFT">
                                  <children>
                                     <Label text="Abbreviated Date Font Size">
@@ -95,6 +109,11 @@
                                     <Font size="24.0" />
                                  </font>
                               </TextField>
+                              <Label text="↻">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
                               <Label text="Standard Time Font Size">
                                  <font>
                                     <Font size="24.0" />
@@ -109,6 +128,11 @@
                                     <Font size="24.0" />
                                  </font>
                               </TextField>
+                              <Label text="↻">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
                               <Label text="Military Time Font Size">
                                  <font>
                                     <Font size="24.0" />
@@ -140,6 +164,11 @@
                                     <Insets />
                                  </HBox.margin>
                               </HBox>
+                              <Label text="↻">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
                               <Label text="Example Boolean Setting">
                                  <font>
                                     <Font size="24.0" />
@@ -152,7 +181,14 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT">
                            <children>
-                              <Pane prefWidth="139.0" />
+                              <Pane prefWidth="139.0">
+                                 <children>
+                                    <Label layoutX="105.0" layoutY="48.0" text="↻">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children></Pane>
                               <VBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="625.0" spacing="8.0">
                                  <children>
                                     <HBox alignment="BOTTOM_LEFT" spacing="24.0">

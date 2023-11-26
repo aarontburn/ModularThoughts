@@ -26,10 +26,6 @@ public class HomeModule extends Module {
         clock = new HomeClock();
     }
 
-    public enum ChangeEvents {
-        DATE_CHANGED, TIME_CHANGED, APPLY_SETTINGS
-    }
-
     @Override
     public void initialize() {
         super.initialize();
@@ -87,9 +83,28 @@ public class HomeModule extends Module {
 
 
         settings.addSetting(new StringSetting(this)
-                .setName("Font color")
+                .setName("a")
                 .setDescription("In hex.")
                 .setDefault("#FFFFFF"));
+
+
+        settings.addSetting(new StringSetting(this)
+                .setName("2")
+                .setDescription("In hex.")
+                .setDefault("#FFFFFF"));
+
+
+        settings.addSetting(new StringSetting(this)
+                .setName("3")
+                .setDescription("In hex.")
+                .setDefault("#FFFFFF"));
+
+
+        settings.addSetting(new StringSetting(this)
+                .setName("4")
+                .setDescription("In hex.")
+                .setDefault("#FFFFFF"));
+
 
 
     }
@@ -100,7 +115,9 @@ public class HomeModule extends Module {
         clock.stop();
     }
 
-
+    public enum ChangeEvents {
+        DATE_CHANGED, TIME_CHANGED, APPLY_SETTINGS
+    }
 
     private class HomeClock {
         private static final DateTimeFormatter STANDARD_TIME_FORMATTER = DateTimeFormatter.ofPattern("h:mm:ss a");
@@ -110,11 +127,9 @@ public class HomeModule extends Module {
 
         private final ScheduledExecutorService timeScheduler;
         private final ScheduledExecutorService dateScheduler;
-
-        private LocalDateTime currentDateTime;
-
         private final String[] timePayload = new String[2];
         private final String[] datePayload = new String[2];
+        private LocalDateTime currentDateTime;
 
 
         private HomeClock() {
