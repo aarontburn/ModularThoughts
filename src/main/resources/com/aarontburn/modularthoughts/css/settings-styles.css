@@ -2,39 +2,40 @@
 
 
 
-
-
 .split-pane {
-    -fx-border-color: -fx-default-background-color;
+    -fx-border-color: default-background-color;
 }
 .split-pane:horizontal > .split-pane-divider {
-   -fx-background-color: -fx-accent-color;
+   -fx-background-color: derive(accent-color, -25%);
 }
 .split-pane:vertical > .split-pane-divider {
-   -fx-background-color: -fx-accent-color;
+   -fx-background-color: derive(accent-color, -25%);
+}
+.split-pane > .split-pane-divider {
+    -fx-padding: 0 0.25em 0 0;
 }
 
 .scroll-pane {
-    -fx-border-color: -fx-default-background-color;
+    -fx-border-color: default-background-color;
 }
 
 .text-field {
-    -fx-border-color: -fx-off-white;
-    -fx-control-inner-background: -fx-default-background-color;
-    -fx-prompt-text-fill: -fx-off-white;
+    -fx-border-color: off-white;
+    -fx-control-inner-background: default-background-color;
+    -fx-prompt-text-fill: off-white;
     -fx-border-radius: 5;
 }
 
 .text-field:focused {
-    -fx-border-color: -fx-accent-color;
+    -fx-border-color: accent-color;
 }
 
 
 /*  ScrollBar   */
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{
-    -fx-background-color: -fx-default-background-color;
-    -fx-border-color: -fx-default-background-color;
+    -fx-background-color: default-background-color;
+    -fx-border-color: default-background-color;
     -fx-background-radius : 0.0em;
     -fx-border-radius :2.0em;
 }
@@ -70,14 +71,14 @@
 
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-    -fx-background-color: -fx-accent-color;
+    -fx-background-color: accent-color;
     -fx-background-insets: 2.0, 0.0, 0.0;
     -fx-background-radius: 2.0em;
 }
 
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
-    -fx-background-color: derive(-fx-accent-color, -25%);
+    -fx-background-color: derive(accent-color, -25%);
     -fx-background-insets: 2.0, 0.0, 0.0;
     -fx-background-radius: 2.0em;
 }

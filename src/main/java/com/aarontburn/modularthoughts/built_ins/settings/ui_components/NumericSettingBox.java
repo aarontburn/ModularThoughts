@@ -2,6 +2,8 @@ package com.aarontburn.modularthoughts.built_ins.settings.ui_components;
 
 import com.aarontburn.modularthoughts.built_ins.settings.types.NumericSetting;
 import com.aarontburn.modularthoughts.module_builder.settings.SettingBox;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
@@ -26,6 +28,12 @@ public class NumericSettingBox extends SettingBox<Number> {
         inputTextField.setMaxHeight(Double.MAX_VALUE);
         inputTextField.setStyle(DEFAULT_NAME_STYLE);
         inputTextField.setPrefWidth(USABLE_WIDTH);
+
+        inputTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*(\\.\\d*)?")) {
+                inputTextField.setText(oldValue);
+            }
+        });
 
         inputTextField.setOnKeyPressed(e -> {
             if (e.getCode().equals(KeyCode.ENTER)) {

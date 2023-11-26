@@ -55,6 +55,7 @@ public class HomeGUI extends ModuleGUI {
                 militaryTimeLabel.setText(payload[1]);
             });
             case APPLY_SETTINGS -> {
+
                 final ModuleSettings settings = getModule().getSettings();
                 for (final Setting<?> setting : settings.getSettingsList()) {
                     if (setting.getBoundNodeID() == null) {

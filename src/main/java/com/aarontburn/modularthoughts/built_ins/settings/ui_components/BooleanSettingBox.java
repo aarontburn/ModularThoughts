@@ -37,7 +37,7 @@ public class BooleanSettingBox extends SettingBox<Boolean> {
         });
 
         final Label separator = new Label("/");
-        separator.setStyle(SELECTED_STYLE + "-fx-text-fill: -fx-accent-color");
+        separator.setStyle(SELECTED_STYLE + "-fx-text-fill: accent-color");
 
         falseLabel = new Label("Off");
         falseLabel.setStyle(SELECTED_STYLE);

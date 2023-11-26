@@ -2,15 +2,15 @@
 
 .root * {
     /*  Colors   */
-    -fx-default-background-color: #111111;
-    -fx-off-white: #f5f5f5;
-    -fx-accent-color: rgb(34, 144, 181);
+    default-background-color: #111111;
+    off-white: #f5f5f5;
+    accent-color: rgb(34, 144, 181);
 
     -fx-font-family: "Yu Gothic Light";
 
-    -fx-text-fill: -fx-off-white;
-    -fx-background:  -fx-default-background-color;
-    -fx-background-color:  -fx-default-background-color;
+    -fx-text-fill: off-white;
+    -fx-background: default-background-color;
+    -fx-background-color: default-background-color;
 }
 
 
