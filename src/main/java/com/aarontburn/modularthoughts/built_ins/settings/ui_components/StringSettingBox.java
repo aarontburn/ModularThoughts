@@ -21,13 +21,9 @@ public class StringSettingBox extends SettingBox<String> {
     }
 
     @Override
-    protected void createUI() {
-        final Pane spacer = new Pane();
-        spacer.setPrefWidth(USABLE_WIDTH);
-
+    protected Node createRight() {
         final Setting<?> setting = getSetting();
         final VBox vBox = new VBox(VERTICAL_SPACING);
-        this.getChildren().addAll(spacer, vBox);
 
         final HBox labelBox = new HBox(DEFAULT_SPACING);
         labelBox.setAlignment(Pos.BOTTOM_LEFT);
@@ -48,13 +44,9 @@ public class StringSettingBox extends SettingBox<String> {
             descriptionLabel.setAlignment(Pos.BOTTOM_LEFT);
             labelBox.getChildren().add(descriptionLabel);
         }
-        vBox.getChildren().addAll(labelBox, createUsable());
-    }
 
-    @Override
-    protected Node createUsable() {
         inputTextField = new TextField();
-        inputTextField.setText(getSetting().getValue().toString());
+        inputTextField.setText(getSetting().getValue());
         inputTextField.setAlignment(Pos.CENTER_LEFT);
         inputTextField.setMaxHeight(Double.MAX_VALUE);
         inputTextField.setStyle(DEFAULT_NAME_STYLE);
@@ -69,7 +61,15 @@ public class StringSettingBox extends SettingBox<String> {
             }
         });
 
-        return inputTextField;
+        vBox.getChildren().addAll(labelBox, inputTextField);
+        return vBox;
+    }
+
+    @Override
+    protected Node createLeft() {
+        final Pane spacer = new Pane();
+        spacer.setPrefWidth(USABLE_WIDTH);
+        return spacer;
     }
 
     protected boolean isInputFormValid(final String input) {

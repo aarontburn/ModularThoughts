@@ -3,6 +3,7 @@ package com.aarontburn.modularthoughts.built_ins.settings.ui_components;
 import com.aarontburn.modularthoughts.built_ins.settings.types.HexColorSetting;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -18,7 +19,7 @@ public class HexColorSettingBox extends StringSettingBox {
     }
 
     @Override
-    protected void createUI() {
+    protected Node createLeft() {
         final VBox colorDisplay = new VBox();
         colorDisplay.setAlignment(Pos.CENTER_LEFT);
         colorDisplay.setPrefWidth(USABLE_WIDTH);
@@ -29,31 +30,7 @@ public class HexColorSettingBox extends StringSettingBox {
         colorLabel.setStyle(DEFAULT_COLOR_CSS);
         colorDisplay.getChildren().add(colorLabel);
 
-        final Setting<?> setting = getSetting();
-        final VBox vBox = new VBox(VERTICAL_SPACING);
-        this.getChildren().addAll(colorDisplay, vBox);
-
-        final HBox labelBox = new HBox(DEFAULT_SPACING);
-        labelBox.setAlignment(Pos.BOTTOM_LEFT);
-
-        final Label resetToDefaultLabel = new Label("↻");
-        resetToDefaultLabel.setStyle(DEFAULT_NAME_STYLE);
-        resetToDefaultLabel.setOnMouseClicked(e -> resetToDefault());
-
-        final Label displayLabel = new Label(setting.getSettingName());
-        displayLabel.setAlignment(Pos.BOTTOM_LEFT);
-        labelBox.setStyle(DEFAULT_NAME_STYLE);
-        labelBox.getChildren().addAll(resetToDefaultLabel, displayLabel);
-
-        if (setting.getDescription() != null) {
-            final Label descriptionLabel = new Label(setting.getDescription());
-            descriptionLabel.setStyle(DEFAULT_DESC_STYLE);
-            descriptionLabel.setMaxHeight(Double.MAX_VALUE);
-            descriptionLabel.setAlignment(Pos.BOTTOM_LEFT);
-            labelBox.getChildren().add(descriptionLabel);
-        }
-        vBox.getChildren().addAll(labelBox, createUsable());
-
+        return colorDisplay;
     }
 
 

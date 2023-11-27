@@ -11,10 +11,9 @@ public abstract class SettingBox<T> extends HBox {
     protected static final double DEFAULT_SPACING = 24;
     protected static final int DEFAULT_NAME_FONT_SIZE = 24;
     protected static final int DEFAULT_DESC_FONT_SIZE = 16;
+    protected static final int USABLE_WIDTH = 115;
     protected static final String DEFAULT_NAME_STYLE = String.format("-fx-font-size: %s;", DEFAULT_NAME_FONT_SIZE);
     protected static final String DEFAULT_DESC_STYLE = String.format("-fx-font-size: %s;", DEFAULT_DESC_FONT_SIZE);
-
-    protected static final int USABLE_WIDTH = 115;
 
     private final Setting<T> setting;
 
@@ -26,8 +25,12 @@ public abstract class SettingBox<T> extends HBox {
     }
 
     protected void createUI() {
-        this.getChildren().add(createUsable());
+        this.getChildren().addAll(createLeft(), createRight());
+    }
 
+    protected abstract Node createLeft();
+
+    protected Node createRight() {
         final VBox labelBox = new VBox();
         labelBox.setAlignment(Pos.CENTER_LEFT);
 
@@ -48,11 +51,10 @@ public abstract class SettingBox<T> extends HBox {
             descriptionLabel.setStyle(DEFAULT_DESC_STYLE);
             labelBox.getChildren().add(descriptionLabel);
         }
-        this.getChildren().add(labelBox);
+        return labelBox;
     }
 
 
-    protected abstract Node createUsable();
 
     public abstract void resetToDefault();
 

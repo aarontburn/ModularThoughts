@@ -11,7 +11,6 @@ import javafx.scene.input.KeyCode;
 
 public class NumericSettingBox extends SettingBox<Number> {
 
-
     private TextField inputTextField;
 
     public NumericSettingBox(final Setting<Number> theSetting) {
@@ -19,7 +18,7 @@ public class NumericSettingBox extends SettingBox<Number> {
     }
 
     @Override
-    protected Node createUsable() {
+    protected Node createLeft() {
         inputTextField = new TextField();
         inputTextField.setText(String.valueOf(getSetting().getValue()));
         inputTextField.setAlignment(Pos.CENTER);
@@ -48,9 +47,7 @@ public class NumericSettingBox extends SettingBox<Number> {
         return inputTextField;
     }
 
-
     private void finishedEditing() {
-
         if (!getSetting().getInputValidator().test(inputTextField.getText())) {
             undo();
             return;

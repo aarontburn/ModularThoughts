@@ -25,7 +25,7 @@ public class BooleanSettingBox extends SettingBox<Boolean> {
 
 
     @Override
-    protected Node createUsable() {
+    protected Node createLeft() {
         final HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
         hBox.setPrefWidth(USABLE_WIDTH);
@@ -53,7 +53,7 @@ public class BooleanSettingBox extends SettingBox<Boolean> {
 
     @Override
     public void resetToDefault() {
-        setValue((boolean) getSetting().getDefault());
+        setValue(getSetting().getDefault());
         valueChanged();
     }
 
