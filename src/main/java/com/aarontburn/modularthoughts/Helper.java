@@ -5,6 +5,11 @@ import javafx.scene.layout.AnchorPane;
 
 public class Helper {
 
+    public static double roundDouble(final double value, final int precision) {
+        final int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
+    }
+
 
     public static String getNumberSuffix(final int num) {
         if (!((num > 10) && (num < 19))) {

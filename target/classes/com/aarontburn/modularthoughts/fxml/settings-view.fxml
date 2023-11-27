@@ -193,12 +193,12 @@
                                  <children>
                                     <HBox alignment="BOTTOM_LEFT" spacing="24.0">
                                        <children>
-                                          <Label text="Example String Setting">
+                                          <Label alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" text="Example String Setting">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
                                           </Label>
-                                          <Label text="Example description for this String setting.">
+                                          <Label alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" text="Example description for this String setting.">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>

@@ -33,7 +33,7 @@ public class ModuleSettings {
         settingsMap.put(theSetting.getSettingName(), theSetting);
     }
 
-    public Setting<?> findSettingByName(final String theSettingName) {
+    public Setting<?> getSettingByName(final String theSettingName) {
         return settingsMap.get(theSettingName);
     }
 

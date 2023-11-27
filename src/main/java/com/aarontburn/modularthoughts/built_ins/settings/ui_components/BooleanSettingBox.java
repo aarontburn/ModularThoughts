@@ -1,6 +1,7 @@
 package com.aarontburn.modularthoughts.built_ins.settings.ui_components;
 
 import com.aarontburn.modularthoughts.built_ins.settings.types.BooleanSetting;
+import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 import com.aarontburn.modularthoughts.module_builder.settings.SettingBox;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -17,14 +18,14 @@ public class BooleanSettingBox extends SettingBox<Boolean> {
     private Label trueLabel;
     private Label falseLabel;
 
-    public BooleanSettingBox(final BooleanSetting theSetting) {
+    public BooleanSettingBox(final Setting<Boolean> theSetting) {
         super(theSetting);
         setValue(theSetting.getValue());
     }
 
 
     @Override
-    public Node createUsable() {
+    protected Node createUsable() {
         final HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
         hBox.setPrefWidth(USABLE_WIDTH);
@@ -56,6 +57,16 @@ public class BooleanSettingBox extends SettingBox<Boolean> {
         valueChanged();
     }
 
+    @Override
+    public void undo() {
+        setValue((boolean) getSetting().getValue());
+        valueChanged();
+    }
+
+    @Override
+    protected Object getRawValue() {
+        return selectedValue;
+    }
 
     private void setValue(final boolean theBoolean) {
         selectedValue = theBoolean;

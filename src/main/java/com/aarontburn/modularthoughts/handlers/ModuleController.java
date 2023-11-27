@@ -30,14 +30,16 @@ public class ModuleController extends Application {
     @Override
     public void start(final Stage stage) throws Exception {
         System.setProperty("prism.lcdtext", "true");
+        // start the gui, but don't display the window yet
+        GUI_HANDLER = new GUIHandler(stage);
+
         // Boot up the settings module
-        settingsModule = new SettingsModule();
+        settingsModule = new SettingsModule(this, GUI_HANDLER);
 
         registerModules();
         checkSettings();
 
-        // start the gui, but don't display the window yet
-        GUI_HANDLER = new GUIHandler(stage);
+
         GUI_HANDLER.setOnExit(() -> {
             for (final Module module : moduleList) {
                 module.stop();
@@ -77,19 +79,18 @@ public class ModuleController extends Application {
         for (final Module module : moduleList) {
             final Map<String, Object> settingsMap = StorageHandler.readSettingsFromModuleStorage(module);
 
-            if (settingsMap == null) {
-                continue;
-            }
             final ModuleSettings moduleSettings = module.getSettings();
-
-            for (final String settingName : settingsMap.keySet()) {
-                final Setting<?> setting = moduleSettings.findSettingByName(settingName);
-                if (setting == null) {
-                    Logger.log("WARNING: Invalid setting name: '" + settingName + "' found.");
-                    continue;
+            if (settingsMap != null) {
+                for (final String settingName : settingsMap.keySet()) {
+                    final Setting<?> setting = moduleSettings.getSettingByName(settingName);
+                    if (setting == null) {
+                        Logger.log("WARNING: Invalid setting name: '" + settingName + "' found.");
+                        continue;
+                    }
+                    setting.setValue(settingsMap.get(settingName));
                 }
-                setting.setValue(settingsMap.get(settingName));
             }
+
             StorageHandler.writeSettingsToModuleStorage(module);
 
         }

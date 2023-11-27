@@ -16,6 +16,7 @@ import java.time.temporal.ChronoField;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 public class HomeModule extends Module {
     private static final String MODULE_NAME = "Home";
@@ -43,69 +44,41 @@ public class HomeModule extends Module {
     public void registerSettings() {
         final ModuleSettings settings = getSettings();
 
+
+
         settings.addSetting(new NumericSetting(this)
-                .setName("Full Date Font Size")
+                .setName("Full Date Font Size (1)")
                 .setDescription("Adjusts the font size of the full date display (ex. Sunday, January 1st, 2023).")
                 .setDefault(40.0)
                 .setBoundNodeID("HMdateLabel"));
 
-
         settings.addSetting(new NumericSetting(this)
-                .setName("Abbreviated Date Font Size")
+                .setName("Abbreviated Date Font Size (2)")
                 .setDescription("Adjusts the font size of the abbreviated date display (ex. 1/01/2023).")
                 .setDefault(30.0)
                 .setBoundNodeID("HMabbreviatedDateLabel"));
 
-
         settings.addSetting(new NumericSetting(this)
-                .setName("Standard Time Font Size")
+                .setName("Standard Time Font Size (3)")
                 .setDescription("Adjusts the font size of the standard time display (ex. 11:59:59 PM).")
                 .setDefault(90.0)
                 .setBoundNodeID("HMstandardTimeLabel"));
 
-
         settings.addSetting(new NumericSetting(this)
-                .setName("Military Time Font Size")
+                .setName("Military Time Font Size (4)")
                 .setDescription("Adjusts the font size of the military time display (ex. 23:59:49).")
                 .setDefault(30.0)
                 .setBoundNodeID("HMmilitaryTimeLabel"));
 
+        settings.addSetting(new StringSetting(this)
+                .setName("Display Order")
+                .setDescription("Adjusts the order of the time/date displays.")
+                .setDefault("12 34")
+                .setValidator(o -> (String.valueOf(o)).matches("^(?!.*(\\d).*\\1)[1-4\\s]+$")));
 
         settings.addSetting(new BooleanSetting(this)
-                .setName("Test Boolean")
-                .setDescription("A Boolean Setting")
+                .setName("test boolean")
                 .setDefault(false));
-
-        settings.addSetting(new StringSetting(this)
-                .setName("Some sort of URL")
-                .setDescription("Use this URL to do something.")
-                .setDefault("https://google.com/"));
-
-
-        settings.addSetting(new StringSetting(this)
-                .setName("a")
-                .setDescription("In hex.")
-                .setDefault("#FFFFFF"));
-
-
-        settings.addSetting(new StringSetting(this)
-                .setName("2")
-                .setDescription("In hex.")
-                .setDefault("#FFFFFF"));
-
-
-        settings.addSetting(new StringSetting(this)
-                .setName("3")
-                .setDescription("In hex.")
-                .setDefault("#FFFFFF"));
-
-
-        settings.addSetting(new StringSetting(this)
-                .setName("4")
-                .setDescription("In hex.")
-                .setDefault("#FFFFFF"));
-
-
 
     }
 

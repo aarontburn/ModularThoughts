@@ -17,6 +17,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class GUIHandler {
 
@@ -33,10 +34,7 @@ public class GUIHandler {
 
     private Pane includePane;
     private HBox moduleTabBox;
-    private Label settingsLabel;
-
-
-
+    private Label testLabel;
 
 
     public GUIHandler(final Stage stage) throws Exception {
@@ -68,6 +66,21 @@ public class GUIHandler {
     private void locateNodes() {
         includePane = (Pane) lookup("includePane");
         moduleTabBox = (HBox) lookup("moduleTabBox");
+        testLabel = (Label) lookup("testLabel");
+
+        testLabel.setOnMouseClicked(e -> {
+            Logger.log("Test label pressed");
+
+        });
+
+    }
+
+    public void setAccentColor(final String hexString) {
+        if (!Pattern.compile("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$").matcher(hexString).matches()) {
+            Logger.log("WARNING: Attempting to pass invalid hex string: " + hexString + " to GUI.");
+            return;
+        }
+        scene.getRoot().setStyle("accent-color: " + hexString + ";");
 
     }
 

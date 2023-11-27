@@ -1,14 +1,16 @@
 package com.aarontburn.modularthoughts;
 
-import com.aarontburn.modularthoughts.built_ins.modules.home_module.HomeModule;
-import com.aarontburn.modularthoughts.handlers.StorageHandler;
-
-import java.util.Map;
+import java.util.regex.Pattern;
 
 
 public class SandBox {
 
     public static void main(final String[] args) {
+        var b = "12 34".matches("^(?!.*(\\d).*\\1)[1-4\\s]+$");
+
+        System.out.println(b);
 
     }
+
+
 }

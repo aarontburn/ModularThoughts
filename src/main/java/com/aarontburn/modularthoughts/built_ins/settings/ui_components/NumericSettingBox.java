@@ -1,9 +1,9 @@
 package com.aarontburn.modularthoughts.built_ins.settings.ui_components;
 
+import com.aarontburn.modularthoughts.Helper;
 import com.aarontburn.modularthoughts.built_ins.settings.types.NumericSetting;
+import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 import com.aarontburn.modularthoughts.module_builder.settings.SettingBox;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
@@ -14,14 +14,12 @@ public class NumericSettingBox extends SettingBox<Number> {
 
     private TextField inputTextField;
 
-    public NumericSettingBox(final NumericSetting theSetting) {
+    public NumericSettingBox(final Setting<Number> theSetting) {
         super(theSetting);
     }
 
     @Override
-    public Node createUsable() {
-        // TODO: Restrict this to numbers
-
+    protected Node createUsable() {
         inputTextField = new TextField();
         inputTextField.setText(String.valueOf(getSetting().getValue()));
         inputTextField.setAlignment(Pos.CENTER);
@@ -37,22 +35,56 @@ public class NumericSettingBox extends SettingBox<Number> {
 
         inputTextField.setOnKeyPressed(e -> {
             if (e.getCode().equals(KeyCode.ENTER)) {
-                getSetting().onValueChanged(Double.valueOf(inputTextField.getText()));
+                finishedEditing();
+                super.requestFocus();
             }
         });
 
         inputTextField.focusedProperty().addListener((observableValue, b, isFocused) -> {
             if (!isFocused) {
-                getSetting().onValueChanged(inputTextField.getText());
+                finishedEditing();
             }
         });
         return inputTextField;
     }
 
+
+    private void finishedEditing() {
+        if (getSetting().getInputValidator() != null) {
+            if (!getSetting().getInputValidator().test(inputTextField.getText())) {
+                undo();
+            }
+            return;
+        }
+
+
+        if (inputTextField.getText().isEmpty()) {
+            undo();
+            return;
+        }
+        final double roundedDouble = Helper.roundDouble(Double.parseDouble(inputTextField.getText()), 1);
+
+        inputTextField.setText(String.valueOf(roundedDouble));
+        getSetting().onValueChanged(roundedDouble);
+    }
+
     @Override
     public void resetToDefault() {
         inputTextField.setText(String.valueOf(getSetting().getDefault()));
-        getSetting().onValueChanged(String.valueOf(getSetting().getDefault()));
+        getSetting().onValueChanged(inputTextField.getText());
+
+    }
+
+    @Override
+    public void undo() {
+        inputTextField.setText(String.valueOf(getSetting().getValue()));
+        getSetting().onValueChanged(inputTextField.getText());
+
+    }
+
+    @Override
+    protected Object getRawValue() {
+        return inputTextField.getText();
     }
 
 

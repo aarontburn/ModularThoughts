@@ -1,11 +1,11 @@
-
-
-.root * {
+.root {
     /*  Colors   */
     default-background-color: #111111;
     off-white: #f5f5f5;
-    accent-color: rgb(34, 144, 181);
+    accent-color: #2290B5;
+}
 
+.root * {
     -fx-font-family: "Yu Gothic Light";
 
     -fx-text-fill: off-white;
