@@ -20,7 +20,7 @@ public abstract class Module {
         this.moduleGUI = correspondingGUI;
         this.moduleName = moduleName;
 
-        moduleSettings= new ModuleSettings(this);
+        moduleSettings = new ModuleSettings(this);
         registerSettings();
 
 

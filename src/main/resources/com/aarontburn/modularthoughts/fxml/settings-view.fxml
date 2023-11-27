@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -181,14 +180,39 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT">
                            <children>
-                              <Pane prefWidth="139.0">
+                              <AnchorPane prefWidth="139.0" />
+                              <VBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="625.0" spacing="8.0">
                                  <children>
-                                    <Label layoutX="105.0" layoutY="48.0" text="↻">
+                                    <HBox alignment="BOTTOM_LEFT" spacing="24.0">
+                                       <children>
+                                          <Label alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" text="Example String Setting">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" text="Example description for this String setting.">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <TextField maxHeight="1.7976931348623157E308" prefHeight="46.0" prefWidth="700.0" text="https://google.com/">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
-                                    </Label>
-                                 </children></Pane>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="24.0">
+                           <children>
+                              <VBox alignment="CENTER_LEFT" fillWidth="false" prefWidth="115.0">
+                                 <children>
+                                    <Label prefHeight="48.0" prefWidth="115.0" style="-fx-border-color: white; -fx-border-radius: 5;" />
+                                 </children>
+                              </VBox>
                               <VBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="625.0" spacing="8.0">
                                  <children>
                                     <HBox alignment="BOTTOM_LEFT" spacing="24.0">

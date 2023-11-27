@@ -1,6 +1,5 @@
 package com.aarontburn.modularthoughts.built_ins.settings.types;
 
-import com.aarontburn.modularthoughts.Logger;
 import com.aarontburn.modularthoughts.built_ins.settings.ui_components.HexColorSettingBox;
 import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
@@ -13,7 +12,10 @@ public class HexColorSetting extends Setting<String> {
         setValidator(o -> String.valueOf(o).matches("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"));
     }
 
-    protected HexColorSetting(Module theParentModule, String theSettingName, String theDefaultValue) {
+    protected HexColorSetting(final Module theParentModule,
+                              final String theSettingName,
+                              final String theDefaultValue) {
+
         super(theParentModule, theSettingName, theDefaultValue);
     }
 

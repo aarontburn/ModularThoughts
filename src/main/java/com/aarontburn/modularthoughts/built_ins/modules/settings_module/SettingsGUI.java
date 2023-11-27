@@ -17,9 +17,10 @@ public class SettingsGUI extends ModuleGUI {
 
     private static final String FXML_PATH = "fxml/settings-view.fxml";
 
-    private VBox settingsTabGroup;
 
+    private VBox settingsTabGroup;
     private VBox settingsList;
+    private Label currentlySelectedTab;
 
     public SettingsGUI() {
         super(FXML_PATH);
@@ -35,13 +36,13 @@ public class SettingsGUI extends ModuleGUI {
 
         final ScrollPane leftScrollPane = (ScrollPane) lookup("SMleftScrollPane");
         leftScrollPane.setCache(false);
-        for (Node n : leftScrollPane.getChildrenUnmodifiable()) {
+        for (final Node n : leftScrollPane.getChildrenUnmodifiable()) {
             n.setCache(false);
         }
 
         final ScrollPane rightScrollPane = (ScrollPane) lookup("SMrightScrollPane");
         rightScrollPane.setCache(false);
-        for (Node n : rightScrollPane.getChildrenUnmodifiable()) {
+        for (final Node n : rightScrollPane.getChildrenUnmodifiable()) {
             n.setCache(false);
         }
 
@@ -57,16 +58,22 @@ public class SettingsGUI extends ModuleGUI {
                     final HBox hBox = new HBox();
                     hBox.setAlignment(Pos.CENTER);
 
-                    hBox.setOnMouseClicked(e -> {
-                        settingsList.getChildren().clear();
+                    final Label label = new Label(settingGroupName);
+                    label.setStyle("-fx-font-size: 28;");
 
+                    hBox.setOnMouseClicked(e -> {
+                        if (currentlySelectedTab != null) {
+                            currentlySelectedTab.setStyle("-fx-font-size: 28;");
+                        }
+
+                        currentlySelectedTab = label;
+                        currentlySelectedTab.setStyle("-fx-font-size: 28; -fx-text-fill: accent-color;");
+
+                        settingsList.getChildren().clear();
                         for (final Setting<?> setting : payload.get(settingGroupName)) {
                             settingsList.getChildren().add(setting.getUIComponent());
                         }
                     });
-
-                    final Label label = new Label(settingGroupName);
-                    label.setStyle("-fx-font-size: 28;");
 
                     hBox.getChildren().add(label);
                     settingsTabGroup.getChildren().add(hBox);

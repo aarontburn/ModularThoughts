@@ -50,18 +50,12 @@ public class NumericSettingBox extends SettingBox<Number> {
 
 
     private void finishedEditing() {
-        if (getSetting().getInputValidator() != null) {
-            if (!getSetting().getInputValidator().test(inputTextField.getText())) {
-                undo();
-            }
-            return;
-        }
 
-
-        if (inputTextField.getText().isEmpty()) {
+        if (!getSetting().getInputValidator().test(inputTextField.getText())) {
             undo();
             return;
         }
+
         final double roundedDouble = Helper.roundDouble(Double.parseDouble(inputTextField.getText()), 1);
 
         inputTextField.setText(String.valueOf(roundedDouble));

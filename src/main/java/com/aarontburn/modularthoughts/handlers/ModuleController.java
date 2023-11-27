@@ -20,7 +20,6 @@ public class ModuleController extends Application {
 
     private static GUIHandler GUI_HANDLER;
     private final List<Module> moduleList = new ArrayList<>();
-
     private SettingsModule settingsModule;
 
     public static GUIHandler getGuiHandler() {
@@ -32,6 +31,11 @@ public class ModuleController extends Application {
         System.setProperty("prism.lcdtext", "true");
         // start the gui, but don't display the window yet
         GUI_HANDLER = new GUIHandler(stage);
+        GUI_HANDLER.setOnExit(() -> {
+            for (final Module module : moduleList) {
+                module.stop();
+            }
+        });
 
         // Boot up the settings module
         settingsModule = new SettingsModule(this, GUI_HANDLER);
@@ -40,22 +44,17 @@ public class ModuleController extends Application {
         checkSettings();
 
 
-        GUI_HANDLER.setOnExit(() -> {
-            for (final Module module : moduleList) {
-                module.stop();
-            }
-        });
-
         for (final Module module : moduleList) {
             GUI_HANDLER.addGui(module.getGUI());
         }
 
         GUI_HANDLER.show();
-        settingsModule.initialize();
+        settingsModule.initialize(); // This needs to be after the .show!
 
         for (final Module m : moduleList) {
             if (m.getClass() == HomeModule.class) {
                 m.getGUI().show();
+                break;
             }
         }
 

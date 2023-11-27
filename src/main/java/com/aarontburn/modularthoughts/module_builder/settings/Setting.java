@@ -42,14 +42,6 @@ public abstract class Setting<T> {
         return this;
     }
 
-    public Setting<T> setDescription(final String theDescription) {
-        if (settingDescription != null) {
-            throw new IllegalArgumentException("Cannot reassign description for " + settingName);
-        }
-        this.settingDescription = theDescription;
-        return this;
-    }
-
     public Setting<T> setDefault(final T theDefaultValue) {
         if (defaultValue != null) {
             throw new IllegalArgumentException("Cannot reassign default value for " + settingName);
@@ -62,6 +54,16 @@ public abstract class Setting<T> {
         ready = settingName != null;
         return this;
     }
+
+    public Setting<T> setDescription(final String theDescription) {
+        if (settingDescription != null) {
+            throw new IllegalArgumentException("Cannot reassign description for " + settingName);
+        }
+        this.settingDescription = theDescription;
+        return this;
+    }
+
+
 
     public Setting<T> setBoundNodeID(final String nodeID) {
         if (boundNodeID != null) {

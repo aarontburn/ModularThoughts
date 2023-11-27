@@ -76,9 +76,6 @@ public class HomeModule extends Module {
                 .setDefault("12 34")
                 .setValidator(o -> (String.valueOf(o)).matches("^(?!.*(\\d).*\\1)[1-4\\s]+$")));
 
-        settings.addSetting(new BooleanSetting(this)
-                .setName("test boolean")
-                .setDefault(false));
 
     }
 

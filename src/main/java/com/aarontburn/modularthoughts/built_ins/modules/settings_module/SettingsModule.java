@@ -1,19 +1,18 @@
 package com.aarontburn.modularthoughts.built_ins.modules.settings_module;
 
 import com.aarontburn.modularthoughts.built_ins.settings.types.HexColorSetting;
-import com.aarontburn.modularthoughts.built_ins.settings.types.NumericSetting;
-import com.aarontburn.modularthoughts.built_ins.settings.types.StringSetting;
-import com.aarontburn.modularthoughts.built_ins.settings.ui_components.HexColorSettingBox;
 import com.aarontburn.modularthoughts.handlers.GUIHandler;
 import com.aarontburn.modularthoughts.handlers.ModuleController;
 import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
+import com.aarontburn.modularthoughts.module_builder.settings.SettingBox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 public class SettingsModule extends Module {
 
@@ -50,7 +49,6 @@ public class SettingsModule extends Module {
         settings.addSetting(new HexColorSetting(this)
                         .setName("Accent Color")
                         .setDefault("#2290B5"));
-
 
     }
 

@@ -1,16 +1,27 @@
-init process:
-    Register all active modules
-        - Maybe using json?
+Boot Process:
+    1. Start the GUI, but don't display anything yet.
 
-    Start GUIHandler on view-base
-    add all active modules gui to list of panes
-    add all panes to includePane and set them all invis
+    2. Boot up Settings Module
 
+    3. Register all active modules
+        3.1. ModulesGUI is booted up, which builds the UI
+        3.2. Module settings are registered
 
+    4. Settings are set for each active module.
+        4.1. Checks appropriate directory for each module for "<module_name>_settings.json"
+        4.2. Sets value of each setting
+        4.3. Re-writes the settings for the file to remove unused/old settings.
+        4.4. Adds all settings to the Settings Module
 
+    5. Send all module's GUI to the GUI Handler
 
+    6. Displays the GUI
 
-    overridden homeGUI's initialize sets it as visible
+    7. Initializes the Settings Module (Note: This needs to be AFTER the GUI is displayed, for some reason)
+        7.1. Refresh the settings related to the Settings Module (settings in the "General" tab).
+        7.2. Sends a map of all settings to the SettingsGUI, which generates the content within the Settings tab.
+
+    8. Displays the Home Module
 
 
 

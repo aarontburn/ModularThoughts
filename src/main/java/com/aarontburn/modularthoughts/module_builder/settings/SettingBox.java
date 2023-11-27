@@ -9,13 +9,10 @@ import javafx.scene.layout.VBox;
 public abstract class SettingBox<T> extends HBox {
 
     protected static final double DEFAULT_SPACING = 24;
-
     protected static final int DEFAULT_NAME_FONT_SIZE = 24;
     protected static final int DEFAULT_DESC_FONT_SIZE = 16;
-
     protected static final String DEFAULT_NAME_STYLE = String.format("-fx-font-size: %s;", DEFAULT_NAME_FONT_SIZE);
     protected static final String DEFAULT_DESC_STYLE = String.format("-fx-font-size: %s;", DEFAULT_DESC_FONT_SIZE);
-
 
     protected static final int USABLE_WIDTH = 115;
 
