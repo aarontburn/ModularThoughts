@@ -119,7 +119,7 @@ public abstract class Setting<T> {
      * Use the following methods to set the state of the setting:
      * <ul>
      *     <li>{@link #setName(String)} Sets the name of the setting (REQUIRED).</li>
-     *     <li>{@link #setDefault(Object)} Sets the default value of the setting (REQUIRED).</li>
+     *     <li>{@link #setDefault(T)}} Sets the default value of the setting (REQUIRED).</li>
      *     <li>{@link #setDescription(String)} Sets the description of the setting.</li>
      *     <li>{@link #setBoundNodeId(String)} Sets bound node ID.</li>
      * </ul>
@@ -383,6 +383,7 @@ public abstract class Setting<T> {
      *
      * @param <T> The type of the valid input.
      */
+    @FunctionalInterface
     public interface InputValidator<T> {
 
         /**

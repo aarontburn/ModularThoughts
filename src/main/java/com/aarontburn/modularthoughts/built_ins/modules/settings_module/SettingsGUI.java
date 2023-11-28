@@ -1,5 +1,6 @@
 package com.aarontburn.modularthoughts.built_ins.modules.settings_module;
 
+import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleEvent;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
@@ -22,8 +23,8 @@ public class SettingsGUI extends ModuleGUI {
     private VBox settingsList;
     private Label currentlySelectedTab;
 
-    public SettingsGUI() {
-        super(FXML_PATH);
+    public SettingsGUI(final Module theModule) {
+        super(theModule,FXML_PATH);
     }
 
     @Override

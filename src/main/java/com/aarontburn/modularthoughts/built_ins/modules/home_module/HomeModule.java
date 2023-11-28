@@ -4,8 +4,10 @@ import com.aarontburn.modularthoughts.Helper;
 import com.aarontburn.modularthoughts.built_ins.settings.types.NumericSetting;
 import com.aarontburn.modularthoughts.built_ins.settings.types.StringSetting;
 import com.aarontburn.modularthoughts.module_builder.Module;
-import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
+import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
+import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 
+import javax.annotation.Nonnull;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -20,7 +22,7 @@ public class HomeModule extends Module {
     private final HomeClock clock;
 
     public HomeModule() {
-        super(MODULE_NAME, new HomeGUI());
+        super(MODULE_NAME);
         clock = new HomeClock();
     }
 
@@ -32,56 +34,53 @@ public class HomeModule extends Module {
         refreshSettings();
     }
 
+    @Nonnull
+    @Override
+    protected ModuleGUI setModuleGui() {
+        return new HomeGUI(this);
+    }
+
     @Override
     public void refreshSettings() {
         notifyListeners(ChangeEvents.APPLY_SETTINGS.name(), null);
     }
 
     @Override
-    public void registerSettings() {
-        final ModuleSettings settings = getSettings();
+    protected Setting<?>[] registerSettings() {
+        return new Setting[] {
+                new NumericSetting(this)
+                        .setName("Full Date Font Size (1)")
+                        .setDescription("Adjusts the font size of the full date display (ex. Sunday, January 1st, 2023).")
+                        .setDefault(40.0)
+                        .setBoundNodeId("HMdateLabel"),
 
+                new NumericSetting(this)
+                        .setName("Abbreviated Date Font Size (2)")
+                        .setDescription("Adjusts the font size of the abbreviated date display (ex. 1/01/2023).")
+                        .setDefault(30.0)
+                        .setBoundNodeId("HMabbreviatedDateLabel"),
 
+                new NumericSetting(this)
+                        .setName("Standard Time Font Size (3)")
+                        .setDescription("Adjusts the font size of the standard time display (ex. 11:59:59 PM).")
+                        .setDefault(90.0)
+                        .setBoundNodeId("HMstandardTimeLabel"),
 
-        settings.addSetting(new NumericSetting(this)
-                .setName("Full Date Font Size (1)")
-                .setDescription("Adjusts the font size of the full date display (ex. Sunday, January 1st, 2023).")
-                .setDefault(40.0)
-                .setBoundNodeId("HMdateLabel"));
+                new NumericSetting(this)
+                        .setName("Military Time Font Size (4)")
+                        .setDescription("Adjusts the font size of the military time display (ex. 23:59:49).")
+                        .setDefault(30.0)
+                        .setBoundNodeId("HMmilitaryTimeLabel"),
 
-        settings.addSetting(new NumericSetting(this)
-                .setName("Abbreviated Date Font Size (2)")
-                .setDescription("Adjusts the font size of the abbreviated date display (ex. 1/01/2023).")
-                .setDefault(30.0)
-                .setBoundNodeId("HMabbreviatedDateLabel"));
-
-        settings.addSetting(new NumericSetting(this)
-                .setName("Standard Time Font Size (3)")
-                .setDescription("Adjusts the font size of the standard time display (ex. 11:59:59 PM).")
-                .setDefault(90.0)
-                .setBoundNodeId("HMstandardTimeLabel"));
-
-        settings.addSetting(new NumericSetting(this)
-                .setName("Military Time Font Size (4)")
-                .setDescription("Adjusts the font size of the military time display (ex. 23:59:49).")
-                .setDefault(30.0)
-                .setBoundNodeId("HMmilitaryTimeLabel"));
-
-        settings.addSetting(new StringSetting(this)
-                .setName("Display Order")
-                .setDescription("Adjusts the order of the time/date displays.")
-                .setDefault("12 34")
-                .setValidator(o -> {
+                new StringSetting(this)
+                        .setName("Display Order")
+                        .setDescription("Adjusts the order of the time/date displays.")
+                        .setDefault("12 34")
+                        .setValidator(o -> {
                     final String s = String.valueOf(o);
                     return (s.isEmpty() || s.matches("^(?!.*(\\d).*\\1)[1-4\\s]+$")) ? s : null;
-                }));
-
-        settings.addSetting(new StringSetting(this)
-                .setName("aaa")
-                .setDescription("bbb.")
-                .setDefault("test"));
-
-
+                })
+        };
     }
 
     @Override

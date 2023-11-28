@@ -6,34 +6,40 @@ import java.util.*;
 
 public class ModuleSettings {
 
-
     private final Map<String, Setting<?>> settingsMap = new LinkedHashMap<>();
-
     private final Module module;
-
     private String settingsName;
 
-    public ModuleSettings(final Module module) {
-        this.module = module;
+    public ModuleSettings(final Module theModule) {
+        this.module = theModule;
     }
 
-    public String getModuleSettingsName() {
+    public final String getModuleSettingsName() {
         return settingsName == null ? this.module.getModuleName() : settingsName;
     }
 
-    public List<Setting<?>> getSettingsList() {
+    public final List<Setting<?>> getSettingsList() {
         return new ArrayList<>(this.settingsMap.values());
     }
 
-    public void setSettingsName(final String settingsName) {
-        this.settingsName = settingsName;
+    public final void setSettingsName(final String theModuleSettingName) {
+        this.settingsName = theModuleSettingName;
     }
 
-    public void addSetting(final Setting<?> theSetting) {
+    public final void addSetting(final Setting<?> theSetting) {
         settingsMap.put(theSetting.getSettingName(), theSetting);
     }
 
-    public Setting<?> getSettingByName(final String theSettingName) {
+    public final void addAllSettings(final Setting<?>... theSettings) {
+        if (theSettings == null) {
+            return;
+        }
+        for (final Setting<?> setting : theSettings) {
+            addSetting(setting);
+        }
+    }
+
+    public final Setting<?> getSettingByName(final String theSettingName) {
         return settingsMap.get(theSettingName);
     }
 
@@ -41,13 +47,5 @@ public class ModuleSettings {
     public String toString() {
         return getSettingsList().toString();
     }
-
-
-
-
-
-
-
-
 
 }

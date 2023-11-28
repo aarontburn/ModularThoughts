@@ -2,45 +2,50 @@ package com.aarontburn.modularthoughts.module_builder;
 
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleChangeReporter;
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleListener;
+import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.OverridingMethodsMustInvokeSuper;
 import java.util.Locale;
 
 public abstract class Module {
-
     private final ModuleChangeReporter moduleChangeReporter = new ModuleChangeReporter();
-
-    private final ModuleSettings moduleSettings;
-
+    private final ModuleSettings moduleSettings = new ModuleSettings(this);
     private final ModuleGUI moduleGUI;
-
     private final String moduleName;
-
     private boolean isInitialized;
 
-
-    public Module(final String moduleName, final ModuleGUI correspondingGUI) {
-        this.moduleGUI = correspondingGUI;
+    public Module(@Nonnull final String moduleName) {
         this.moduleName = moduleName;
+        this.moduleSettings.addAllSettings(registerSettings());
 
-        moduleSettings = new ModuleSettings(this);
-        registerSettings();
-
-
-        addListener(correspondingGUI);
-        correspondingGUI.setReferenceModule(this);
+        this.moduleGUI = setModuleGui();
+        addListener(this.moduleGUI);
     }
 
+    public final @Nonnull ModuleGUI getGUI() {
+        return moduleGUI;
+    }
 
-    public abstract void registerSettings();
+    public final @Nonnull String getModuleName() {
+        return this.moduleName;
+    }
 
-    public ModuleSettings getSettings() {
+    public final @Nonnull ModuleSettings getSettings() {
         return this.moduleSettings;
     }
-    public final void addListener(final ModuleListener theListener) {
+
+    public final void addListener(@Nonnull final ModuleListener theListener) {
         moduleChangeReporter.addListener(theListener);
     }
-    public final void notifyListeners(final String theEventName, final Object theData) {
+
+    public final void notifyListeners(@Nonnull String theEventName, @Nullable final Object theData) {
         moduleChangeReporter.notifyListeners(theEventName, theData);
+    }
+
+    public @Nonnull String getSettingsFileName() {
+        return this.moduleName.toLowerCase(Locale.ROOT) + "_settings.json";
     }
 
     /**
@@ -57,43 +62,37 @@ public abstract class Module {
      * <p>
      * Child classes should still do a call to super() to ensure the GUI is initialized as well.
      */
+    @OverridingMethodsMustInvokeSuper
     public void initialize() {
-        // Override this, and do a super.initialize() after initializing model.
-
         moduleGUI.initialize();
         isInitialized = true;
-    }
 
+        // Override this, and do a super.initialize() after initializing model.
+    }
+    protected abstract @Nonnull ModuleGUI setModuleGui();
+
+    protected abstract @Nullable Setting<?>[] registerSettings();
+
+    public abstract void refreshSettings();
 
     /**
      * Overridable method that is called when the GUI is displayed.
      */
-    public void onGuiShown() {
+    void onGuiShown() {
         // Do nothing by default
     }
-
-    public abstract void refreshSettings();
 
     /**
      * Overrideable method to stop a module and GUI. This is useful to shut down threads inside other modules.
      * Child classes should still do a call to super() to ensure the GUI is properly shut down.
      */
+    @OverridingMethodsMustInvokeSuper
     public void stop() {
         moduleGUI.stop();
         // Do nothing by default
     }
 
-    public ModuleGUI getGUI() {
-        return moduleGUI;
-    }
 
-    public String getModuleName() {
-        return this.moduleName;
-    }
-
-    public String getSettingsFileName() {
-        return this.moduleName.toLowerCase(Locale.ROOT) + "_settings.json";
-    }
 
 
 }

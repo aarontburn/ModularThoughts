@@ -84,6 +84,7 @@ public abstract class SettingBox<T> extends HBox {
      *
      * @return The right Node.
      */
+
     protected Node createRight() {
         final VBox labelBox = new VBox();
         labelBox.setAlignment(Pos.CENTER_LEFT);
@@ -120,10 +121,5 @@ public abstract class SettingBox<T> extends HBox {
     }
 
     protected abstract void updateDisplayValue();
-
-    public void undo() {
-        updateSetting(setting.getValue());
-    }
-
 
 }

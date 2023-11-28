@@ -1,12 +1,9 @@
 Boot Process:
     1. Start the GUI, but don't display anything yet.
-
     2. Boot up Settings Module
-
     3. Register all active modules
-        3.1. ModulesGUI is booted up, which builds the UI
-        3.2. Module settings are registered
-
+        3.1. Module settings are registered via a call to registerSettings()
+        3.2. Constructors for ModulesGUI's are booted up. This only sets FXML path and parent module.
     4. Settings are set for each active module.
         4.1. Checks appropriate directory for each module for "<module_name>_settings.json"
         4.2. Sets value of each setting
@@ -14,9 +11,7 @@ Boot Process:
         4.4. Adds all settings to the Settings Module
 
     5. Send all module's GUI to the GUI Handler
-
     6. Displays the GUI
-
     7. Initializes the Settings Module (Note: This needs to be AFTER the GUI is displayed, for some reason)
         7.1. Refresh the settings related to the Settings Module (settings in the "General" tab).
         7.2. Sends a map of all settings to the SettingsGUI, which generates the content within the Settings tab.
@@ -24,20 +19,27 @@ Boot Process:
     8. Displays the Home Module
 
 
+Changing Modules:
+    When the module tab is pressed:
+        1. If the module hasn't been initialized yet, initialize it.
+        2. Invoke the Module GUI's onGuiShown()
+            2.1. Invokes the Modules onGuiShown()
 
-To-do:
-    - M
+        3. Sets the GUI's node to be visible
+
+
 
 Settings:
-    Home: This will be in charge of general program settings
-        - Lazy Initialization: only initialize modules once they are clicked on
-        - Color scheme?
+    General:
+        - Accent color
+        - Startup module
 
-
-
-
-
-
+    Home:
+        - Full date font size
+        - Abbreviated date font size
+        - Standard time font size
+        - Military time font size
+        - Display order
 
 
 

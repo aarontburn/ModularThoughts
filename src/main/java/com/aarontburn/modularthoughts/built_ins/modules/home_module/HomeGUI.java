@@ -1,6 +1,7 @@
 package com.aarontburn.modularthoughts.built_ins.modules.home_module;
 
 import com.aarontburn.modularthoughts.Logger;
+import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
 import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleEvent;
@@ -19,11 +20,10 @@ public class HomeGUI extends ModuleGUI {
     private final Map<String, Node> boundNodesByID = new HashMap<>();
     private Label fullDateLabel, abbreviatedDateLabel;
     private Label standardTimeLabel, militaryTimeLabel;
-
     private VBox labelContainer;
 
-    public HomeGUI() {
-        super(HOME_FXML_PATH);
+    public HomeGUI(final Module theModule) {
+        super(theModule, HOME_FXML_PATH);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class HexColorSetting extends Setting<String> {
 
     @Override
     public String validateInput(final Object theInput) {
-        final String s = (String) theInput;
+        final String s = String.valueOf(theInput);
         return s.matches("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$") ? s : null;
     }
 

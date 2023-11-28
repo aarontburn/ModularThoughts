@@ -4,15 +4,15 @@ import com.aarontburn.modularthoughts.built_ins.settings.types.HexColorSetting;
 import com.aarontburn.modularthoughts.handlers.GUIHandler;
 import com.aarontburn.modularthoughts.handlers.ModuleController;
 import com.aarontburn.modularthoughts.module_builder.Module;
+import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
 import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
-import com.aarontburn.modularthoughts.module_builder.settings.SettingBox;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 
 public class SettingsModule extends Module {
 
@@ -27,29 +27,19 @@ public class SettingsModule extends Module {
 
 
     public SettingsModule(final ModuleController moduleController, final GUIHandler guiHandler) {
-        super(MODULE_NAME, new SettingsGUI());
+        super(MODULE_NAME);
         this.controller = moduleController;
         this.guiHandler = guiHandler;
         getSettings().setSettingsName("General");
     }
 
     @Override
-    public void registerSettings() {
-        final ModuleSettings settings = getSettings();
-
-        // This is where general settings will be located
-//        final StringSetting hexColorPicker = (StringSetting)
-//                new StringSetting(this)
-//                .setName("Accent Color")
-//                .setDefault("#2290B5")
-//                .setValidator(o -> String.valueOf(o).matches("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"));
-//
-//        hexColorPicker.setUIComponent(new HexColorSettingBox(hexColorPicker));
-
-        settings.addSetting(new HexColorSetting(this)
+    protected Setting<?>[] registerSettings() {
+        return new Setting[] {
+                new HexColorSetting(this)
                         .setName("Accent Color")
-                        .setDefault("#2290B5"));
-
+                        .setDefault("#2290B5"),
+        };
     }
 
     @Override
@@ -63,6 +53,12 @@ public class SettingsModule extends Module {
         }
         refreshSettings();
         notifyListeners(ChangeEvents.POPULATE_SETTINGS_LIST.name(), settingsMap);
+    }
+
+    @Nonnull
+    @Override
+    protected ModuleGUI setModuleGui() {
+        return new SettingsGUI(this);
     }
 
     @Override
@@ -86,6 +82,7 @@ public class SettingsModule extends Module {
         POPULATE_SETTINGS_LIST
     }
 
+    @Nonnull
     @Override
     public String getSettingsFileName() {
         return "general_settings.json";
