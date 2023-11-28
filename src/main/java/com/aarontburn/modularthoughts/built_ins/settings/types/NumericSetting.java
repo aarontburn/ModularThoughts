@@ -1,7 +1,7 @@
 package com.aarontburn.modularthoughts.built_ins.settings.types;
 
 
-import com.aarontburn.modularthoughts.Logger;
+import com.aarontburn.modularthoughts.Helper;
 import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 import com.aarontburn.modularthoughts.built_ins.settings.ui_components.NumericSettingBox;
@@ -18,40 +18,24 @@ public class NumericSetting extends Setting<Number> {
                           final Number theDefaultValue) {
 
         super(theParentModule, theSettingName, theDefaultValue);
-
-        setValidator(o -> {
-            if (o instanceof Number) {
-                return true;
-            } else {
-                try {
-                    Double.parseDouble((String.valueOf(o)));
-                    return true;
-                } catch (final NumberFormatException | ClassCastException e) {
-                    Logger.log("WARNING: Could not parse " + o + " to a number. Reverting to default...");
-                }
-            }
-            return false;
-        });
     }
 
 
     @Override
-    public Number validateInput(final Object newValue) {
-        if (newValue instanceof Number) {
-            return (Number) newValue;
+    public Number validateInput(final Object theInput) {
+        if (theInput instanceof Number) {
+            return (Number) theInput;
         }
-
         try {
-            return (Double.parseDouble(String.valueOf(newValue)));
-        } catch (final NumberFormatException | ClassCastException e) {
-            Logger.log("WARNING: Could not parse " + newValue + " to a number. Reverting to last valid...");
+            return Helper.roundDouble(Double.parseDouble(String.valueOf(theInput)), 1);
+        } catch (final NumberFormatException | ClassCastException ignored) {
         }
 
-        return getValue();
+        return null;
     }
 
     @Override
-    public SettingBox<Number> getUIComponent() {
+    public SettingBox<Number> setUIComponent() {
         return new NumericSettingBox(this);
     }
 

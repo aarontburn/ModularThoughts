@@ -1,8 +1,6 @@
 package com.aarontburn.modularthoughts.built_ins.modules.home_module;
 
 import com.aarontburn.modularthoughts.Helper;
-import com.aarontburn.modularthoughts.Logger;
-import com.aarontburn.modularthoughts.built_ins.settings.types.BooleanSetting;
 import com.aarontburn.modularthoughts.built_ins.settings.types.NumericSetting;
 import com.aarontburn.modularthoughts.built_ins.settings.types.StringSetting;
 import com.aarontburn.modularthoughts.module_builder.Module;
@@ -16,7 +14,6 @@ import java.time.temporal.ChronoField;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
 
 public class HomeModule extends Module {
     private static final String MODULE_NAME = "Home";
@@ -74,7 +71,15 @@ public class HomeModule extends Module {
                 .setName("Display Order")
                 .setDescription("Adjusts the order of the time/date displays.")
                 .setDefault("12 34")
-                .setValidator(o -> (String.valueOf(o)).matches("^(?!.*(\\d).*\\1)[1-4\\s]+$")));
+                .setValidator(o -> {
+                    final String s = String.valueOf(o);
+                    return (s.isEmpty() || s.matches("^(?!.*(\\d).*\\1)[1-4\\s]+$")) ? s : null;
+                }));
+
+        settings.addSetting(new StringSetting(this)
+                .setName("aaa")
+                .setDescription("bbb.")
+                .setDefault("test"));
 
 
     }
@@ -119,7 +124,6 @@ public class HomeModule extends Module {
                     1000,
                     TimeUnit.MILLISECONDS);
 
-            // TODO: Verify this works!
             dateScheduler.scheduleAtFixedRate(
                     this::updateDate,
                     Duration.between(LocalTime.now(), LocalTime.MIDNIGHT.minusNanos(1)).toMillis(),

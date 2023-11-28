@@ -8,14 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class StringSettingBox extends SettingBox<String> {
 
     protected static final int VERTICAL_SPACING = 8;
     private TextField inputTextField;
-
     public StringSettingBox(final Setting<String> theSetting) {
         super(theSetting);
     }
@@ -30,7 +28,7 @@ public class StringSettingBox extends SettingBox<String> {
 
         final Label resetToDefaultLabel = new Label("↻");
         resetToDefaultLabel.setStyle(DEFAULT_NAME_STYLE);
-        resetToDefaultLabel.setOnMouseClicked(e -> resetToDefault());
+        resetToDefaultLabel.setOnMouseClicked(e -> getSetting().resetToDefault());
 
         final Label displayLabel = new Label(setting.getSettingName());
         displayLabel.setAlignment(Pos.BOTTOM_LEFT);
@@ -52,12 +50,12 @@ public class StringSettingBox extends SettingBox<String> {
         inputTextField.setStyle(DEFAULT_NAME_STYLE);
         inputTextField.setOnKeyPressed(e -> {
             if (e.getCode().equals(KeyCode.ENTER)) {
-                finishedEditing();
+                getSetting().setValue(inputTextField.getText());
             }
         });
         inputTextField.focusedProperty().addListener((observableValue, b, isFocused) -> {
             if (!isFocused) {
-                finishedEditing();
+                getSetting().setValue(inputTextField.getText());
             }
         });
 
@@ -66,46 +64,12 @@ public class StringSettingBox extends SettingBox<String> {
     }
 
     @Override
-    protected Node createLeft() {
-        final Pane spacer = new Pane();
-        spacer.setPrefWidth(USABLE_WIDTH);
-        return spacer;
-    }
-
-    protected boolean isInputFormValid(final String input) {
-        if (getSetting().getInputValidator() != null) {
-            return getSetting().getInputValidator().test(input);
-        }
-
-        return !input.isEmpty();
-    }
-
-    private void finishedEditing() {
-        if (!isInputFormValid(inputTextField.getText())) {
-            undo();
-            return;
-        }
-        getSetting().onValueChanged(inputTextField.getText());
+    protected void updateDisplayValue() {
+        inputTextField.setText(getSetting().getValue());
     }
 
 
-    @Override
-    public void resetToDefault() {
-        inputTextField.setText(String.valueOf(getSetting().getDefault()));
-        getSetting().onValueChanged(inputTextField.getText());
 
-    }
-
-    @Override
-    public void undo() {
-        inputTextField.setText(String.valueOf(getSetting().getValue()));
-        getSetting().onValueChanged(inputTextField.getText());
-    }
-
-    @Override
-    protected Object getRawValue() {
-        return inputTextField.getText();
-    }
 
 
 }

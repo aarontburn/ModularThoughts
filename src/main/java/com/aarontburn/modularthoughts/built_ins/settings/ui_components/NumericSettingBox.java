@@ -1,7 +1,6 @@
 package com.aarontburn.modularthoughts.built_ins.settings.ui_components;
 
 import com.aarontburn.modularthoughts.Helper;
-import com.aarontburn.modularthoughts.built_ins.settings.types.NumericSetting;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 import com.aarontburn.modularthoughts.module_builder.settings.SettingBox;
 import javafx.geometry.Pos;
@@ -24,7 +23,7 @@ public class NumericSettingBox extends SettingBox<Number> {
         inputTextField.setAlignment(Pos.CENTER);
         inputTextField.setMaxHeight(Double.MAX_VALUE);
         inputTextField.setStyle(DEFAULT_NAME_STYLE);
-        inputTextField.setPrefWidth(USABLE_WIDTH);
+        inputTextField.setPrefWidth(LEFT_WIDTH);
 
         inputTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*(\\.\\d*)?")) {
@@ -34,49 +33,22 @@ public class NumericSettingBox extends SettingBox<Number> {
 
         inputTextField.setOnKeyPressed(e -> {
             if (e.getCode().equals(KeyCode.ENTER)) {
-                finishedEditing();
+                getSetting().setValue(inputTextField.getText());
                 super.requestFocus();
             }
         });
 
         inputTextField.focusedProperty().addListener((observableValue, b, isFocused) -> {
             if (!isFocused) {
-                finishedEditing();
+                getSetting().setValue(inputTextField.getText());
             }
         });
         return inputTextField;
     }
 
-    private void finishedEditing() {
-        if (!getSetting().getInputValidator().test(inputTextField.getText())) {
-            undo();
-            return;
-        }
-
-        final double roundedDouble = Helper.roundDouble(Double.parseDouble(inputTextField.getText()), 1);
-
-        inputTextField.setText(String.valueOf(roundedDouble));
-        getSetting().onValueChanged(roundedDouble);
-    }
-
     @Override
-    public void resetToDefault() {
-        inputTextField.setText(String.valueOf(getSetting().getDefault()));
-        getSetting().onValueChanged(inputTextField.getText());
-
+    protected void updateDisplayValue() {
+        inputTextField.setText(String.valueOf(getSetting().getValue().doubleValue()));
     }
-
-    @Override
-    public void undo() {
-        inputTextField.setText(String.valueOf(getSetting().getValue()));
-        getSetting().onValueChanged(inputTextField.getText());
-
-    }
-
-    @Override
-    protected Object getRawValue() {
-        return inputTextField.getText();
-    }
-
 
 }

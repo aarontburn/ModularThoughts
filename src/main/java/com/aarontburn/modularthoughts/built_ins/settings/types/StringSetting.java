@@ -1,6 +1,5 @@
 package com.aarontburn.modularthoughts.built_ins.settings.types;
 
-import com.aarontburn.modularthoughts.built_ins.settings.ui_components.HexColorSettingBox;
 import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 import com.aarontburn.modularthoughts.built_ins.settings.ui_components.StringSettingBox;
@@ -12,18 +11,21 @@ public class StringSetting extends Setting<String> {
         this(theParentModule, null, null);
     }
 
-
-
     public StringSetting(final Module theParentModule,
                          final String theSettingName,
                          final String theDefaultValue) {
 
         super(theParentModule, theSettingName, theDefaultValue);
-
     }
 
     @Override
-    public SettingBox<String> getUIComponent() {
+    public String validateInput(final Object theInput) {
+        final String s = (String) theInput;
+        return !s.isEmpty() ? s : null;
+    }
+
+    @Override
+    public SettingBox<String> setUIComponent() {
         return new StringSettingBox(this);
     }
 

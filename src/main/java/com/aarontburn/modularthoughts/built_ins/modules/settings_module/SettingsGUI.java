@@ -71,7 +71,7 @@ public class SettingsGUI extends ModuleGUI {
 
                         settingsList.getChildren().clear();
                         for (final Setting<?> setting : payload.get(settingGroupName)) {
-                            settingsList.getChildren().add(setting.getUIComponent());
+                            settingsList.getChildren().add(setting.getUIComponent().createUI());
                         }
                     });
 

@@ -86,5 +86,10 @@ public class SettingsModule extends Module {
         POPULATE_SETTINGS_LIST
     }
 
+    @Override
+    public String getSettingsFileName() {
+        return "general_settings.json";
+    }
+
 
 }

@@ -3,6 +3,7 @@ module com.aarontburn.modularthoughts {
     requires javafx.fxml;
     requires com.google.gson;
     requires java.desktop;
+    requires jsr305;
 
 
     opens com.aarontburn.modularthoughts to javafx.fxml;

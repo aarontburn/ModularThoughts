@@ -10,15 +10,6 @@ public class BooleanSetting extends Setting<Boolean> {
 
     public BooleanSetting(final Module theParentModule) {
         this(theParentModule, null, null);
-
-        setValidator(o -> {
-            if (o instanceof Boolean) {
-                return (Boolean) o;
-            }
-            final String s = String.valueOf(o);
-
-            return s.equalsIgnoreCase("true") || s.equalsIgnoreCase("false");
-        });
     }
 
     public BooleanSetting(final Module theParentModule,
@@ -28,9 +19,23 @@ public class BooleanSetting extends Setting<Boolean> {
         super(theParentModule, theSettingName, theDefaultValue);
     }
 
+    @Override
+    public Boolean validateInput(final Object theInput) {
+        if (theInput instanceof Boolean) {
+            return (Boolean) theInput;
+        }
+        final String s = String.valueOf(theInput);
+        if (s.equalsIgnoreCase("true")) {
+            return true;
+        } else if (s.equalsIgnoreCase("false")) {
+            return false;
+        }
+        return null;
+    }
+
 
     @Override
-    public SettingBox<Boolean> getUIComponent() {
+    public SettingBox<Boolean> setUIComponent() {
         return new BooleanSettingBox(this);
     }
 }

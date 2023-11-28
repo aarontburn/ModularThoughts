@@ -15,8 +15,6 @@ public class StorageHandler {
 
     private static final File STORAGE_PATH = new File(System.getProperty("user.dir") + "/storage/");
 
-    private static final String SETTINGS_EXTENSION = "_settings.json";
-
     private static final Gson GSON = new Gson();
 
     public static void writeToModuleStorage(final Module theModule,
@@ -46,14 +44,14 @@ public class StorageHandler {
             settingsMap.put(setting.getSettingName(), setting.getValue());
         }
 
-        writeToModuleStorage(theModule, theModule.getModuleName().toLowerCase(Locale.ROOT) + SETTINGS_EXTENSION, GSON.toJson(settingsMap));
+        writeToModuleStorage(theModule, theModule.getSettingsFileName(), GSON.toJson(settingsMap));
     }
 
     public static Map<String, Object> readSettingsFromModuleStorage(final Module theModule) {
         Map<String, Object> settingsMap = null;
 
         final String dirName = theModule.getModuleName().toLowerCase(Locale.ROOT);
-        final File file = new File(STORAGE_PATH + "/" + dirName + "/", dirName + SETTINGS_EXTENSION);
+        final File file = new File(STORAGE_PATH + "/" + dirName + "/", theModule.getSettingsFileName());
 
         try (final Reader reader = new FileReader(file)) {
             settingsMap = GSON.fromJson(reader, Map.class);

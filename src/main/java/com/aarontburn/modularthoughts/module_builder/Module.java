@@ -3,6 +3,8 @@ package com.aarontburn.modularthoughts.module_builder;
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleChangeReporter;
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleListener;
 
+import java.util.Locale;
+
 public abstract class Module {
 
     private final ModuleChangeReporter moduleChangeReporter = new ModuleChangeReporter();
@@ -34,11 +36,9 @@ public abstract class Module {
     public ModuleSettings getSettings() {
         return this.moduleSettings;
     }
-
     public final void addListener(final ModuleListener theListener) {
         moduleChangeReporter.addListener(theListener);
     }
-
     public final void notifyListeners(final String theEventName, final Object theData) {
         moduleChangeReporter.notifyListeners(theEventName, theData);
     }
@@ -46,7 +46,7 @@ public abstract class Module {
     /**
      * Checks if both the module and GUI are properly initialized.
      *
-     * @return True if both module and GUI are initalized, false otherwise.
+     * @return True if both module and GUI are initialized, false otherwise.
      */
     public boolean isInitialized() {
         return this.isInitialized;
@@ -89,6 +89,10 @@ public abstract class Module {
 
     public String getModuleName() {
         return this.moduleName;
+    }
+
+    public String getSettingsFileName() {
+        return this.moduleName.toLowerCase(Locale.ROOT) + "_settings.json";
     }
 
 

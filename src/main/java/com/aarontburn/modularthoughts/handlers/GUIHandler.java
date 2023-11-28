@@ -17,17 +17,14 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 public class GUIHandler {
 
     private static final String WINDOW_TITLE = "Modular Thoughts";
-
     private static final String VIEW_BASE_PATH = "fxml/view-base.fxml";
-
     private static final Dimension WINDOW_DIMENSION = new Dimension(1920, 1080);
-
     private static final Map<String, Pane> PANE_MAP = new HashMap<>();
+    private static boolean GUI_INITIALIZED;
     private final Scene scene;
     private final Stage stage;
 
@@ -57,10 +54,15 @@ public class GUIHandler {
 
     public void show() {
         stage.show();
+        GUI_INITIALIZED = true;
     }
 
     public void setOnExit(final Runnable r) {
         scene.getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, windowEvent -> r.run());
+    }
+
+    public static boolean isGuiInitialized() {
+        return GUI_INITIALIZED;
     }
 
     private void locateNodes() {
@@ -76,7 +78,7 @@ public class GUIHandler {
     }
 
     public void setAccentColor(final String hexString) {
-        if (!Pattern.compile("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$").matcher(hexString).matches()) {
+        if (!hexString.matches("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")) {
             Logger.log("WARNING: Attempting to pass invalid hex string: " + hexString + " to GUI.");
             return;
         }
