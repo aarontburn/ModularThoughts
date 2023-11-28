@@ -69,11 +69,6 @@ public class SettingsModule extends Module {
                         .getValue()));
     }
 
-
-    public void addModuleSettings(final ModuleSettings moduleSettings) {
-        this.moduleSettingsList.add(moduleSettings);
-    }
-
     public void addModuleSettings(final List<ModuleSettings> moduleSettingsList) {
         this.moduleSettingsList.addAll(moduleSettingsList);
     }

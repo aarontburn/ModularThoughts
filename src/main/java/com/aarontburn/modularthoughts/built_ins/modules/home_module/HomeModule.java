@@ -47,7 +47,7 @@ public class HomeModule extends Module {
 
     @Override
     protected Setting<?>[] registerSettings() {
-        return new Setting[] {
+        return new Setting[]{
                 new NumericSetting(this)
                         .setName("Full Date Font Size (1)")
                         .setDescription("Adjusts the font size of the full date display (ex. Sunday, January 1st, 2023).")

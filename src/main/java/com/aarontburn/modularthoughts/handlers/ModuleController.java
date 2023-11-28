@@ -53,8 +53,8 @@ public class ModuleController extends Application {
 
 
         for (final Module m : moduleList) {
-            if (m.getClass() == HomeModule.class) {
-                m.getGUI().onGuiShown();
+            if (m instanceof HomeModule) {
+                GUIHandler.swapToGui(m.getGUI());
                 break;
             }
         }

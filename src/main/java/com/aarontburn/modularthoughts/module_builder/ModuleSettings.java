@@ -9,7 +9,6 @@ public class ModuleSettings {
     private final Map<String, Setting<?>> settingsMap = new LinkedHashMap<>();
     private final Module module;
     private String settingsName;
-
     public ModuleSettings(final Module theModule) {
         this.module = theModule;
     }
