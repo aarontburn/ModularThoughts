@@ -93,7 +93,7 @@ public abstract class SettingBox<T> extends HBox {
 
         final Label resetToDefaultLabel = new Label("↻");
         resetToDefaultLabel.setStyle(DEFAULT_NAME_STYLE);
-        resetToDefaultLabel.setOnMouseClicked(e -> updateSetting(setting.getDefault()));
+        resetToDefaultLabel.setOnMouseClicked(e -> setting.resetToDefault());
 
         final Label nameLabel = new Label(setting.getSettingName());
         nameLabel.setStyle(DEFAULT_NAME_STYLE);
