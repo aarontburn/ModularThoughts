@@ -93,7 +93,7 @@ public abstract class Setting<T> {
      * the assumption that they will be set later, as they are required fields.
      *
      * @param theParentModule The module that this setting belongs to.
-     * @param theSettingName The name of the setting.
+     * @param theSettingName  The name of the setting.
      * @param theDefaultValue The default value of the setting.
      */
     protected Setting(@Nonnull final Module theParentModule,
@@ -316,7 +316,7 @@ public abstract class Setting<T> {
      * @param theInput The input to parse.
      * @return A {@link T} valid input, or null if the input could not be parsed.
      */
-    public abstract @Nullable T validateInput(final Object theInput);
+    protected abstract @Nullable T validateInput(final Object theInput);
 
     /**
      * Sets the input validator for this setting.
@@ -328,6 +328,9 @@ public abstract class Setting<T> {
      * @return This setting.
      */
     public @Nonnull Setting<T> setValidator(@Nonnull final InputValidator<T> theInputValidator) {
+        if (this.inputValidator != null) {
+            throw new UnsupportedOperationException("Cannot input validator for " + this.settingName);
+        }
         this.inputValidator = theInputValidator;
         return this;
     }
