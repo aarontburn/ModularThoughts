@@ -18,8 +18,7 @@ import java.util.*;
 
 public class HomeGUI extends ModuleGUI {
 
-    private static final String HOME_FXML_PATH
-            = Objects.requireNonNull(Main.class.getResource("fxml/home-view.fxml")).getPath();
+    private static final String HOME_FXML_PATH = "fxml/home-view.fxml";
     private final Map<String, Node> boundNodesByID = new HashMap<>();
     private Label fullDateLabel, abbreviatedDateLabel;
     private Label standardTimeLabel, militaryTimeLabel;

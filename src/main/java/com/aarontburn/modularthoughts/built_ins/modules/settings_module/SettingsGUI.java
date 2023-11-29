@@ -18,9 +18,7 @@ import java.util.Objects;
 
 public class SettingsGUI extends ModuleGUI {
 
-    private static final String FXML_PATH
-            = Objects.requireNonNull(Main.class.getResource("fxml/settings-view.fxml")).getPath();
-
+    private static final String FXML_PATH = "fxml/settings-view.fxml";
     private VBox settingsTabGroup;
     private VBox settingsList;
     private Label currentlySelectedTab;

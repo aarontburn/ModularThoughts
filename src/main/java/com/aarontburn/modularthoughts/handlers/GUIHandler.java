@@ -95,7 +95,7 @@ public class GUIHandler {
         }
 
         try {
-            final Pane pane = new FXMLLoader(new File(gui.getFxmlPath()).toURI().toURL()).load();
+            final Pane pane = new FXMLLoader(Main.class.getResource(gui.getFxmlPath())).load();
             pane.setVisible(false);
 
             PANE_MAP.put(gui.getFxmlPath(), pane);

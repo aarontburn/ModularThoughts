@@ -57,7 +57,7 @@ public class StorageHandler {
         try (final Reader reader = new FileReader(file)) {
             settingsMap = GSON.fromJson(reader, Map.class);
 
-        } catch (IOException e) {
+        } catch (final IOException e) {
             Logger.log("WARNING: Couldn't find settings for " + theModule.getModuleName());
         }
 
