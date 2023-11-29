@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
 import java.util.Locale;
+import java.util.Objects;
 
 public abstract class Module {
     private final ModuleChangeReporter moduleChangeReporter = new ModuleChangeReporter();
@@ -72,6 +73,10 @@ public abstract class Module {
     protected abstract @Nonnull ModuleGUI setModuleGui();
 
     protected abstract @Nullable Setting<?>[] registerSettings();
+
+    public @Nonnull String getResourceDirectory() {
+        return Objects.requireNonNull(getClass().getResource("resources/")).getPath();
+    }
 
     public abstract void refreshSettings();
 

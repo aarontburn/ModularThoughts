@@ -1,6 +1,7 @@
 package com.aarontburn.modularthoughts.built_ins.modules.home_module;
 
 import com.aarontburn.modularthoughts.Logger;
+import com.aarontburn.modularthoughts.Main;
 import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
 import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
@@ -11,18 +12,20 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import javax.annotation.Nonnull;
 import java.util.*;
 
 
 public class HomeGUI extends ModuleGUI {
 
-    private static final String HOME_FXML_PATH = "fxml/home-view.fxml";
+    private static final String HOME_FXML_PATH
+            = Objects.requireNonNull(Main.class.getResource("fxml/home-view.fxml")).getPath();
     private final Map<String, Node> boundNodesByID = new HashMap<>();
     private Label fullDateLabel, abbreviatedDateLabel;
     private Label standardTimeLabel, militaryTimeLabel;
     private VBox labelContainer;
 
-    public HomeGUI(final Module theModule) {
+    public HomeGUI(@Nonnull final Module theModule) {
         super(theModule, HOME_FXML_PATH);
     }
 

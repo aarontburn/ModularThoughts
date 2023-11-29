@@ -13,7 +13,8 @@ import java.util.Map;
 
 public class StorageHandler {
 
-    private static final File STORAGE_PATH = new File(System.getProperty("user.dir") + "/storage/");
+    private static final File STORAGE_PATH
+            = new File(System.getProperty("user.home") + "/.thoughts/storage/");
 
     private static final Gson GSON = new Gson();
 

@@ -27,11 +27,11 @@ public class ModuleController extends Application {
     }
 
     @Override
-    public void start(final Stage stage) throws Exception {
+    public void start(final Stage theStage) throws Exception {
         System.setProperty("prism.lcdtext", "true");
 
         // start the gui, but don't display the window yet
-        GUI_HANDLER = new GUIHandler(stage);
+        GUI_HANDLER = new GUIHandler(theStage);
         GUI_HANDLER.setOnExit(() -> {
             for (final Module module : moduleList) {
                 module.stop();

@@ -15,7 +15,9 @@ import javafx.stage.WindowEvent;
 
 import javax.annotation.Nonnull;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,8 +68,8 @@ public class GUIHandler {
         GUI_INITIALIZED = true;
     }
 
-    final void setOnExit(final Runnable r) {
-        scene.getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, windowEvent -> r.run());
+    final void setOnExit(final Runnable theExitAction) {
+        scene.getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, windowEvent -> theExitAction.run());
     }
 
     public static boolean isGuiInitialized() {
@@ -93,7 +95,7 @@ public class GUIHandler {
         }
 
         try {
-            final Pane pane = new FXMLLoader(Main.class.getResource(gui.getFxmlPath())).load();
+            final Pane pane = new FXMLLoader(new File(gui.getFxmlPath()).toURI().toURL()).load();
             pane.setVisible(false);
 
             PANE_MAP.put(gui.getFxmlPath(), pane);

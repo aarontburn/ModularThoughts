@@ -1,5 +1,6 @@
 package com.aarontburn.modularthoughts.built_ins.modules.settings_module;
 
+import com.aarontburn.modularthoughts.Main;
 import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleEvent;
@@ -13,18 +14,19 @@ import javafx.scene.layout.VBox;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class SettingsGUI extends ModuleGUI {
 
-    private static final String FXML_PATH = "fxml/settings-view.fxml";
-
+    private static final String FXML_PATH
+            = Objects.requireNonNull(Main.class.getResource("fxml/settings-view.fxml")).getPath();
 
     private VBox settingsTabGroup;
     private VBox settingsList;
     private Label currentlySelectedTab;
 
     public SettingsGUI(final Module theModule) {
-        super(theModule,FXML_PATH);
+        super(theModule, FXML_PATH);
     }
 
     @Override
