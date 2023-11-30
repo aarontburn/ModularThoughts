@@ -35,6 +35,7 @@ public class AlarmGUI extends ModuleGUI {
 
         final ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         this.rootPane.getChildren().add( Helper.setAnchor(scrollPane, 72, 24, 24, 24));
 
         alarmContainer = new FlexBox();
