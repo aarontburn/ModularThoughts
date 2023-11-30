@@ -35,6 +35,8 @@ public class GUIHandler {
     private Pane includePane;
     private HBox moduleTabBox;
 
+    private Label lastPressedLabel;
+
 
     public GUIHandler(final Stage stage) throws Exception {
         this.stage = stage;
@@ -103,7 +105,15 @@ public class GUIHandler {
 
             final Label tabLabel = new Label(gui.getModule().getModuleName());
             tabLabel.setStyle("-fx-font-size: 20;");
-            tabLabel.setOnMouseClicked(e -> swapToGui(gui));
+            tabLabel.setOnMouseClicked(e -> {
+                swapToGui(gui);
+                if (lastPressedLabel != null) {
+                    lastPressedLabel.setStyle("-fx-font-size: 20;");
+                }
+                lastPressedLabel = tabLabel;
+                lastPressedLabel.setStyle("-fx-font-size: 20; -fx-text-fill: accent-color;");
+
+            });
             tabLabel.setMaxHeight(Double.MAX_VALUE);
             tabLabel.setMaxWidth(Double.MAX_VALUE);
             moduleTabBox.getChildren().add(tabLabel);

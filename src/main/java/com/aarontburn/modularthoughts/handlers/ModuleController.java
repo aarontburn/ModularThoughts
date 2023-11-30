@@ -7,6 +7,7 @@ import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.built_ins.modules.settings_module.SettingsModule;
 import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
+import com.aarontburn.modularthoughts.non_essential_modules.alarm_module.AlarmModule;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -65,6 +66,7 @@ public class ModuleController extends Application {
         Logger.log("BOOT: Registering modules...");
         // Figure out what modules are active
         registerModule(new HomeModule());
+        registerModule(new AlarmModule());
         registerModule(settingsModule);
     }
 

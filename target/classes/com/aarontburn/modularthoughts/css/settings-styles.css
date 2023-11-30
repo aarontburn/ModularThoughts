@@ -1,7 +1,6 @@
 @import url("colors.css");
 
-
-
+/*  Split Pane */
 .split-pane {
     -fx-border-color: default-background-color;
 }
@@ -15,10 +14,7 @@
     -fx-padding: 0 0.25em 0 0;
 }
 
-.scroll-pane {
-    -fx-border-color: default-background-color;
-}
-
+/*  Text Fields */
 .text-field {
     -fx-border-color: off-white;
     -fx-control-inner-background: default-background-color;
@@ -30,55 +26,3 @@
     -fx-border-color: accent-color;
 }
 
-
-/*  ScrollBar   */
-.scroll-bar:horizontal .track,
-.scroll-bar:vertical .track{
-    -fx-background-color: default-background-color;
-    -fx-border-color: default-background-color;
-    -fx-background-radius : 0.0em;
-    -fx-border-radius :2.0em;
-}
-
-
-.scroll-bar:horizontal .increment-button ,
-.scroll-bar:horizontal .decrement-button {
-    -fx-background-color :transparent;
-    -fx-background-radius : 0.0em;
-    -fx-padding :0.0 0.0 10.0 0.0;
-
-}
-
-.scroll-bar:vertical .increment-button ,
-.scroll-bar:vertical .decrement-button {
-    -fx-background-color :transparent;
-    -fx-background-radius : 0.0em;
-    -fx-padding :0.0 10.0 0.0 0.0;
-
-}
-
- .scroll-bar .increment-arrow,
- .scroll-bar .decrement-arrow{
-    -fx-shape : " ";
-    -fx-padding :0.15em 0.0;
-}
-
- .scroll-bar:vertical .increment-arrow,
- .scroll-bar:vertical .decrement-arrow{
-    -fx-shape : " ";
-    -fx-padding :0.0 0.15em;
-}
-
-.scroll-bar:horizontal .thumb,
-.scroll-bar:vertical .thumb {
-    -fx-background-color: accent-color;
-    -fx-background-insets: 2.0, 0.0, 0.0;
-    -fx-background-radius: 2.0em;
-}
-
-.scroll-bar:horizontal .thumb:hover,
-.scroll-bar:vertical .thumb:hover {
-    -fx-background-color: derive(accent-color, -25%);
-    -fx-background-insets: 2.0, 0.0, 0.0;
-    -fx-background-radius: 2.0em;
-}

@@ -4,6 +4,7 @@ module com.aarontburn.modularthoughts {
     requires com.google.gson;
     requires java.desktop;
     requires jsr305;
+    requires org.apache.commons.collections4;
 
 
     opens com.aarontburn.modularthoughts to javafx.fxml;

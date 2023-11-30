@@ -46,15 +46,15 @@ public class HomeGUI extends ModuleGUI {
     }
 
     @Override
-    public void eventFired(final ModuleEvent event) {
-        switch (HomeModule.ChangeEvents.valueOf(event.getEventName())) {
+    public void eventFired(final ModuleEvent theEvent) {
+        switch (HomeModule.ChangeEvents.valueOf(theEvent.getEventName())) {
             case DATE_CHANGED -> Platform.runLater(() -> {
-                final String[] payload = (String[]) event.getData();
+                final String[] payload = (String[]) theEvent.getData();
                 fullDateLabel.setText(payload[0]);
                 abbreviatedDateLabel.setText(payload[1]);
             });
             case TIME_CHANGED -> Platform.runLater(() -> {
-                final String[] payload = (String[]) event.getData();
+                final String[] payload = (String[]) theEvent.getData();
                 standardTimeLabel.setText(payload[0]);
                 militaryTimeLabel.setText(payload[1]);
             });

@@ -1,0 +1,8 @@
+@import url("colors.css");
+
+
+.text-field:focused {
+    -fx-border-color: accent-color;
+}
+
+

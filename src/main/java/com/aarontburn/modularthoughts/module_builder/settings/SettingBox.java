@@ -63,6 +63,7 @@ public abstract class SettingBox<T> extends HBox {
         }
         isInitialized = true;
         this.getChildren().addAll(createLeft(), createRight());
+        updateDisplayValue();
         return this;
     }
 

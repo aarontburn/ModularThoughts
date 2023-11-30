@@ -9,10 +9,7 @@ import com.aarontburn.modularthoughts.module_builder.ModuleSettings;
 import com.aarontburn.modularthoughts.module_builder.settings.Setting;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SettingsModule extends Module {
 
@@ -23,7 +20,7 @@ public class SettingsModule extends Module {
 
     private final List<ModuleSettings> moduleSettingsList = new ArrayList<>();
 
-    private final Map<String, List<Setting<?>>> settingsMap = new HashMap<>();
+    private final Map<String, List<Setting<?>>> settingsMap = new LinkedHashMap<>();
 
 
     public SettingsModule(final ModuleController moduleController, final GUIHandler guiHandler) {
@@ -35,7 +32,7 @@ public class SettingsModule extends Module {
 
     @Override
     protected Setting<?>[] registerSettings() {
-        return new Setting[] {
+        return new Setting[]{
                 new HexColorSetting(this)
                         .setName("Accent Color")
                         .setDefault("#2290B5"),
@@ -46,7 +43,14 @@ public class SettingsModule extends Module {
     public void initialize() {
         super.initialize();
 
+        final ModuleSettings thisSettings = getSettings();
+        settingsMap.put(thisSettings.getModuleSettingsName(), thisSettings.getSettingsList());
+
         for (final ModuleSettings moduleSettings : moduleSettingsList) {
+            if (moduleSettings == thisSettings) {
+                continue;
+            }
+
             final String name = moduleSettings.getModuleSettingsName();
             final List<Setting<?>> list = moduleSettings.getSettingsList();
             settingsMap.put(name, list);

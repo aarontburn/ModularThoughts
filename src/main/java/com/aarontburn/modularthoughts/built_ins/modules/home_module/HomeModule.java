@@ -79,7 +79,8 @@ public class HomeModule extends Module {
                         .setValidator(o -> {
                     final String s = String.valueOf(o);
                     return (s.isEmpty() || s.matches("^(?!.*(\\d).*\\1)[1-4\\s]+$")) ? s : null;
-                })
+                }),
+
         };
     }
 

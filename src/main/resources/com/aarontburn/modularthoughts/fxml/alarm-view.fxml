@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AMroot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="AMnewAlarmButton" layoutX="1662.0" layoutY="49.0" text="+ New Alarm" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@../css/colors.css" />
+      <URL value="@../css/alarm-styles.css" />
+   </stylesheets>
+</AnchorPane>

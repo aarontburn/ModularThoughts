@@ -16,7 +16,6 @@ public class BooleanSettingBox extends SettingBox<Boolean> {
 
     public BooleanSettingBox(final Setting<Boolean> theSetting) {
         super(theSetting);
-        updateSetting(theSetting.getValue());
     }
 
     @Override

@@ -50,10 +50,10 @@ public class SettingsGUI extends ModuleGUI {
     }
 
     @Override
-    public void eventFired(ModuleEvent event) {
-        switch (SettingsModule.ChangeEvents.valueOf(event.getEventName())) {
+    public void eventFired(ModuleEvent theEvent) {
+        switch (SettingsModule.ChangeEvents.valueOf(theEvent.getEventName())) {
             case POPULATE_SETTINGS_LIST -> {
-                final Map<String, List<Setting<?>>> payload = (Map<String, List<Setting<?>>>) event.getData();
+                final Map<String, List<Setting<?>>> payload = (Map<String, List<Setting<?>>>) theEvent.getData();
 
                 for (final String settingGroupName : payload.keySet()) {
                     final HBox hBox = new HBox();
