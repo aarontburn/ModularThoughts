@@ -90,7 +90,7 @@ public class HomeModule extends Module {
         clock.stop();
     }
 
-    public enum ChangeEvents {
+    enum ChangeEvents {
         DATE_CHANGED, TIME_CHANGED, APPLY_SETTINGS
     }
 

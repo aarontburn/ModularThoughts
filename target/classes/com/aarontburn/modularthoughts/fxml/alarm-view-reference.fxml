@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.onexip.flexboxfx.FlexBox?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,39 +21,35 @@
       </Label>
       <ScrollPane fitToWidth="true" layoutX="34.0" layoutY="82.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="72.0">
          <content>
-            <FlexBox horizontalSpace="4.0" verticalSpace="4.0">
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="16.0">
                <children>
-                  <VBox spacing="48.0" style="-fx-border-color: white; -fx-padding: 16;">
+                  <VBox style="-fx-border-color: white; -fx-padding: 16;">
                      <children>
-                        <VBox>
+                        <HBox alignment="TOP_RIGHT">
                            <children>
-                              <HBox alignment="TOP_RIGHT">
-                                 <children>
-                                    <Label text="On">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="/">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="Off" textFill="WHITE">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <Label text="School">
+                              <Label text="On">
                                  <font>
-                                    <Font size="40.0" />
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="/">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Off" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
                                  </font>
                               </Label>
                            </children>
-                        </VBox>
-                        <VBox alignment="CENTER">
+                        </HBox>
+                        <Label text="School">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="286.0" prefWidth="1836.0">
                            <children>
                               <Label text="8:30 PM">
                                  <font>
@@ -67,7 +63,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <GridPane alignment="CENTER" minWidth="420.0">
+                        <GridPane alignment="CENTER" prefHeight="147.0" prefWidth="1836.0">
                            <columnConstraints>
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
@@ -117,40 +113,42 @@
                                  </font>
                               </Label>
                            </children>
+                           <padding>
+                              <Insets bottom="24.0" top="48.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </GridPane>
                      </children>
                   </VBox>
-                  <VBox spacing="48.0" style="-fx-border-color: white; -fx-padding: 16;">
+                  <VBox style="-fx-border-color: white; -fx-padding: 16;">
                      <children>
-                        <VBox>
+                        <HBox alignment="TOP_RIGHT">
                            <children>
-                              <HBox alignment="TOP_RIGHT">
-                                 <children>
-                                    <Label text="On">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="/">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="Off" textFill="WHITE">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <Label text="School">
+                              <Label text="On">
                                  <font>
-                                    <Font size="40.0" />
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="/">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Off" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
                                  </font>
                               </Label>
                            </children>
-                        </VBox>
-                        <VBox alignment="CENTER">
+                        </HBox>
+                        <Label text="School">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="286.0" prefWidth="1836.0">
                            <children>
                               <Label text="8:30 PM">
                                  <font>
@@ -164,7 +162,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <GridPane alignment="CENTER" minWidth="420.0">
+                        <GridPane alignment="CENTER" prefHeight="147.0" prefWidth="1836.0">
                            <columnConstraints>
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
@@ -214,11 +212,314 @@
                                  </font>
                               </Label>
                            </children>
+                           <padding>
+                              <Insets bottom="24.0" top="48.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  <VBox style="-fx-border-color: white; -fx-padding: 16;">
+                     <children>
+                        <HBox alignment="TOP_RIGHT">
+                           <children>
+                              <Label text="On">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="/">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Off" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="School">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="286.0" prefWidth="1836.0">
+                           <children>
+                              <Label text="8:30 PM">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
+                              <Label text="20:30">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <GridPane alignment="CENTER" prefHeight="147.0" prefWidth="1836.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Su">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Mo" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Tu" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="We" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Th" GridPane.columnIndex="4">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Fr" GridPane.columnIndex="5">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Sat" GridPane.columnIndex="6">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="24.0" top="48.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  <VBox style="-fx-border-color: white; -fx-padding: 16;">
+                     <children>
+                        <HBox alignment="TOP_RIGHT">
+                           <children>
+                              <Label text="On">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="/">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Off" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="School">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="286.0" prefWidth="1836.0">
+                           <children>
+                              <Label text="8:30 PM">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
+                              <Label text="20:30">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <GridPane alignment="CENTER" prefHeight="147.0" prefWidth="1836.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Su">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Mo" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Tu" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="We" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Th" GridPane.columnIndex="4">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Fr" GridPane.columnIndex="5">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Sat" GridPane.columnIndex="6">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="24.0" top="48.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  <VBox style="-fx-border-color: white; -fx-padding: 16;">
+                     <children>
+                        <HBox alignment="TOP_RIGHT">
+                           <children>
+                              <Label text="On">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="/">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Off" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="School">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="286.0" prefWidth="1836.0">
+                           <children>
+                              <Label text="8:30 PM">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
+                              <Label text="20:30">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <GridPane alignment="CENTER" prefHeight="147.0" prefWidth="1836.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Su">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Mo" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Tu" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="We" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Th" GridPane.columnIndex="4">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Fr" GridPane.columnIndex="5">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" minHeight="50.0" minWidth="50.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-padding: 7;" text="Sat" GridPane.columnIndex="6">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="24.0" top="48.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </GridPane>
                      </children>
                   </VBox>
                </children>
-            </FlexBox>
+            </VBox>
          </content>
       </ScrollPane>
    </children>

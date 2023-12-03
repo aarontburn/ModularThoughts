@@ -14,10 +14,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import javax.annotation.Nonnull;
-import java.awt.*;
-import java.io.File;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 

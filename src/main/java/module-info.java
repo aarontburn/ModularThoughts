@@ -2,9 +2,10 @@ module com.aarontburn.modularthoughts {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.google.gson;
-    requires java.desktop;
     requires jsr305;
     requires org.apache.commons.collections4;
+    requires java.desktop;
+    requires jfxflexbox;
 
 
     opens com.aarontburn.modularthoughts to javafx.fxml;

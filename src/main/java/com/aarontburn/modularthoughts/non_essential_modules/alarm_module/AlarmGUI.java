@@ -1,13 +1,18 @@
 package com.aarontburn.modularthoughts.non_essential_modules.alarm_module;
 
+import com.aarontburn.modularthoughts.CSSBuilder;
 import com.aarontburn.modularthoughts.Helper;
-import com.aarontburn.modularthoughts.dependencies.flexboxfx.FlexBox;
 import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleEvent;
+import com.dukescript.layouts.flexbox.FlexboxLayout;
+import com.dukescript.layouts.jfxflexbox.FlexBoxPane;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -18,7 +23,7 @@ public class AlarmGUI extends ModuleGUI {
     private static final String FXML_PATH = "fxml/alarm-view.fxml";
 
     private AnchorPane rootPane;
-    private FlexBox alarmContainer;
+    private FlexBoxPane alarmContainer;
     private Label newAlarmButton;
     private final AlarmModule module;
     private final List<AlarmUIComponent> alarmUiList = new ArrayList<>();
@@ -38,9 +43,8 @@ public class AlarmGUI extends ModuleGUI {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         this.rootPane.getChildren().add( Helper.setAnchor(scrollPane, 72, 24, 24, 24));
 
-        alarmContainer = new FlexBox();
-        alarmContainer.setHorizontalSpace(8);
-        alarmContainer.setVerticalSpace(8);
+        alarmContainer = new FlexBoxPane();
+        alarmContainer.setFlexDirection(FlexboxLayout.FlexDirection.ROW);
         scrollPane.setContent(alarmContainer);
 
         attachEvents();

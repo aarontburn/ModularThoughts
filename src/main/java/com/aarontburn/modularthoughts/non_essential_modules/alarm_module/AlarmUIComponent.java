@@ -1,7 +1,9 @@
 package com.aarontburn.modularthoughts.non_essential_modules.alarm_module;
 
 import com.aarontburn.modularthoughts.CSSBuilder;
+import com.dukescript.layouts.jfxflexbox.FlexBoxPane;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
@@ -16,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class AlarmUIComponent extends VBox {
     private static final DateTimeFormatter STANDARD_TIME_FORMATTER = DateTimeFormatter.ofPattern("h:mm a");
     private static final DateTimeFormatter MILITARY_TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    static final int MIN_WIDTH = 454;
     private static final int VERTICAL_SPACING = 48;
     private static final int NAME_FONT_SIZE = 40;
     private static final int STANDARD_TIME_FONT_SIZE = 50;
@@ -39,11 +42,16 @@ public class AlarmUIComponent extends VBox {
     private final Alarm alarm;
 
     private Label alarmNameLabel;
+    private Label onLabel;
+    private Label offLabel;
 
     public AlarmUIComponent(@Nonnull final Alarm theAlarm) {
         super(VERTICAL_SPACING);
         this.alarm = theAlarm;
         this.setFillWidth(true);
+        this.setMaxWidth(Double.MAX_VALUE);
+        FlexBoxPane.setGrow(this, 1.0f);
+        FlexBoxPane.setMargin(this, new Insets(8));
         this.setStyle(new CSSBuilder()
                 .setBorderColor("white")
                 .setBorderRadius(5)
@@ -56,11 +64,10 @@ public class AlarmUIComponent extends VBox {
         hBox.setAlignment(Pos.CENTER_LEFT);
 
 
-        final Label onLabel = CSSBuilder.styleNewLabel("On", new CSSBuilder().setFontSize(24));
+        onLabel = CSSBuilder.styleNewLabel("On", new CSSBuilder().setFontSize(24));
         final Label separator = CSSBuilder.styleNewLabel("/", new CSSBuilder().setFontSize(24).setTextFill("accent-color"));
-        final Label offLabel = CSSBuilder.styleNewLabel("Off", new CSSBuilder().setFontSize(24));
+        offLabel = CSSBuilder.styleNewLabel("Off", new CSSBuilder().setFontSize(24));
         hBox.getChildren().addAll(onLabel, separator, offLabel);
-
 
         alarmNameLabel = CSSBuilder.styleNewLabel(alarm.getAlarmName(), new CSSBuilder().setFontSize(NAME_FONT_SIZE));
 

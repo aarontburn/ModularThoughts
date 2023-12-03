@@ -77,7 +77,7 @@ public class SettingsModule extends Module {
         this.moduleSettingsList.addAll(moduleSettingsList);
     }
 
-    public enum ChangeEvents {
+    enum ChangeEvents {
         POPULATE_SETTINGS_LIST
     }
 
