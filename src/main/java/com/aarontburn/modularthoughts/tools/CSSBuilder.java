@@ -1,53 +1,65 @@
-package com.aarontburn.modularthoughts;
+package com.aarontburn.modularthoughts.tools;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CSSBuilder {
 
-    private final StringBuilder cssStringBuilder = new StringBuilder();
+    private final Map<String, String> cssMap = new HashMap<>();
 
     public CSSBuilder setBorderColor(final String s) {
-        cssStringBuilder.append("-fx-border-color: ").append(s).append(";");
+        cssMap.put("-fx-border-color", s);
         return this;
     }
 
     public CSSBuilder setBorderColor(final int r, final int g, final int b) {
-        cssStringBuilder.append(String.format("-fx-border-color: rgb(%s, %s, %s);", r, g, b));
+        cssMap.put("-fx-border-color", String.format("rgb(%s, %s, %s)", r, g, b));
         return this;
     }
 
     public CSSBuilder setBorderRadius(final double radius) {
-        cssStringBuilder.append("-fx-border-radius: ").append(radius).append(";");
+        cssMap.put("-fx-border-radius", String.valueOf(radius));
         return this;
     }
 
     public CSSBuilder setTextFill(final String s) {
-        cssStringBuilder.append("-fx-text-fill: ").append(s).append(";");
+        cssMap.put("-fx-text-fill", s);
         return this;
     }
 
     public CSSBuilder setTextFill(final int r, final int g, final int b) {
-        cssStringBuilder.append(String.format("-fx-text-fill: rgb(%s, %s, %s);", r, g, b));
+        cssMap.put("-fx-text-fill", String.format("rgb(%s, %s, %s);", r, g, b));
         return this;
     }
 
     public CSSBuilder setFontSize(final int size) {
-        cssStringBuilder.append("-fx-font-size: ").append(size).append(";");
+        cssMap.put("-fx-font-size", String.valueOf(size));
         return this;
     }
 
     public CSSBuilder setPadding(final double padding) {
-        cssStringBuilder.append("-fx-padding: ").append(padding).append(";");
+        cssMap.put("-fx-padding", String.valueOf(padding));
         return this;
     }
 
-    public String finish() {
-        return cssStringBuilder.toString();
+    public CSSBuilder manualSet(final String key, final Object value) {
+        this.cssMap.put(key, String.valueOf(value));
+        return this;
+    }
+
+    public String build() {
+        final StringBuilder s = new StringBuilder();
+        for (final String key : cssMap.keySet()) {
+            s.append(key).append(": ").append(cssMap.get(key)).append(";");
+        }
+        return s.toString();
     }
 
     public static Node styleNode(final Node theNode, final CSSBuilder theCSS) {
-        return styleNode(theNode, theCSS.finish());
+        return styleNode(theNode, theCSS.build());
     }
 
     public static Node styleNode(final Node theNode, final String theCSS) {
@@ -69,6 +81,14 @@ public class CSSBuilder {
 
     public static Label styleLabel(final Label theLabel, final String theCSS) {
         return (Label) styleNode(theLabel, theCSS);
+    }
+
+    CSSBuilder fromMap(final Map<String, String> theParser) {
+        final CSSBuilder builder = new CSSBuilder();
+        for (final String css : theParser.keySet()) {
+            cssMap.put(css, theParser.get(css));
+        }
+        return builder;
     }
 
 

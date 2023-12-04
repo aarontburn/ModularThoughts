@@ -1,16 +1,14 @@
 package com.aarontburn.modularthoughts;
 
 
-import java.io.File;
+import com.aarontburn.modularthoughts.tools.CSSParser;
 
 public class SandBox {
 
     public static void main(final String[] args) {
+        String s = "accent-text-color: off-white;accent-color: #B0ABED;accent-text-color: off-white;accent-color: #B0ABED;accent-text-color: off-white;accent-color: #B0ABED;";
 
-        File f = new File(System.getProperty("user.home") + "/.thoughts/");
-
-        System.out.println(f.mkdir());
-
+        CSSParser.parse(s);
     }
 
 

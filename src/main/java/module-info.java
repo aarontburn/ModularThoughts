@@ -20,4 +20,6 @@ module com.aarontburn.modularthoughts {
     opens com.aarontburn.modularthoughts.handlers to javafx.fxml;
     exports com.aarontburn.modularthoughts.built_ins.settings.types;
     opens com.aarontburn.modularthoughts.built_ins.settings.types to javafx.fxml;
+    exports com.aarontburn.modularthoughts.tools;
+    opens com.aarontburn.modularthoughts.tools to javafx.fxml;
 }

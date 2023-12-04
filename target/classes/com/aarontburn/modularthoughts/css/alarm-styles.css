@@ -1,8 +1,11 @@
 @import url("colors.css");
 
 
-.text-field:focused {
-    -fx-border-color: accent-color;
+.alarm-name-input {
+    -fx-font-size: 24;
 }
 
+.time-input {
+    -fx-font-size: 48;
+}
 

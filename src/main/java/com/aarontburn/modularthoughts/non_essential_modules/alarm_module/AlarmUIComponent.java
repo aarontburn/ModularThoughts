@@ -1,6 +1,6 @@
 package com.aarontburn.modularthoughts.non_essential_modules.alarm_module;
 
-import com.aarontburn.modularthoughts.CSSBuilder;
+import com.aarontburn.modularthoughts.tools.CSSBuilder;
 import com.dukescript.layouts.jfxflexbox.FlexBoxPane;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -24,13 +24,13 @@ public class AlarmUIComponent extends VBox {
     private static final int STANDARD_TIME_FONT_SIZE = 50;
     private static final int MILITARY_TIME_FONT_SIZE = 25;
 
-    private static final String WEEKDAY_SELECTOR_STYLE
+    protected static final String WEEKDAY_SELECTOR_STYLE
             = new CSSBuilder()
             .setFontSize(24)
             .setBorderColor("white")
             .setBorderRadius(100)
             .setPadding(7)
-            .finish();
+            .build();
 
 
     private static final ColumnConstraints WEEKDAY_SELECTOR_CONSTRAINTS = new ColumnConstraints();
@@ -56,7 +56,7 @@ public class AlarmUIComponent extends VBox {
                 .setBorderColor("white")
                 .setBorderRadius(5)
                 .setPadding(16)
-                .finish());
+                .build());
 
         final VBox topBox = new VBox();
 

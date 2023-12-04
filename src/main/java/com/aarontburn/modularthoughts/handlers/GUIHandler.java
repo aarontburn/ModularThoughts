@@ -4,6 +4,8 @@ import com.aarontburn.modularthoughts.Helper;
 import com.aarontburn.modularthoughts.Logger;
 import com.aarontburn.modularthoughts.Main;
 import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
+import com.aarontburn.modularthoughts.tools.CSSBuilder;
+import com.aarontburn.modularthoughts.tools.CSSParser;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -60,7 +62,12 @@ public class GUIHandler {
 
 
         Label testLabel = (Label) lookup("testLabel");
-        testLabel.setOnMouseClicked(e -> Logger.log("Test label pressed"));
+        testLabel.setOnMouseClicked(e -> {
+            Logger.log("Test label pressed");
+            System.out.println(scene.getRoot().getStyle());
+            System.out.println(CSSParser.parse(scene.getRoot().getStyle()).build());
+//            scene.getRoot().setStyle("accent-text-color: off-black;");
+        });
 
     }
 
@@ -82,7 +89,21 @@ public class GUIHandler {
             Logger.log("WARNING: Attempting to pass invalid hex string: " + hexString + " to GUI.");
             return;
         }
-        scene.getRoot().setStyle("accent-color: " + hexString + ";");
+
+
+        final int r = Integer.parseInt(hexString.substring(1, 3), 16);
+        final int g = Integer.parseInt(hexString.substring(3, 5), 16);
+        final int b = Integer.parseInt(hexString.substring(5, 7), 16);
+
+        final CSSBuilder css = CSSParser.parse(scene.getRoot().getStyle())
+                .manualSet("accent-color", hexString);
+        if (r * 0.299 + g * 0.587 + b * 0.114 > 186) {
+            css.manualSet("accent-text-color", "off-black");
+        } else {
+            css.manualSet("accent-text-color", "off-white");
+        }
+        scene.getRoot().setStyle(css.build());
+
     }
 
 
