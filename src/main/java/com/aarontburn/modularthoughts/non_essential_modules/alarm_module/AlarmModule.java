@@ -46,14 +46,13 @@ public class AlarmModule extends Module {
 
     }
 
-    void createNewSetting() {
-        final Alarm alarm = new Alarm("<alarm>");
-        alarmList.add(alarm);
+    void createNewAlarm(final Alarm theNewAlarm) {
+        alarmList.add(theNewAlarm);
 
-        notifyListeners(ChangeEvents.UPDATE_SETTING.name(), alarm);
+        notifyListeners(ChangeEvents.UPDATE_ALARMS.name(), theNewAlarm);
     }
 
     enum ChangeEvents {
-        UPDATE_SETTING
+        UPDATE_ALARMS
     }
 }

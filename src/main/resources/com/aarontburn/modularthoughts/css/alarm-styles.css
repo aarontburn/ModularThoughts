@@ -9,3 +9,14 @@
     -fx-font-size: 48;
 }
 
+
+#AMeditButton .ikonli-font-icon {
+    -fx-icon-code: "far-edit";
+    -fx-icon-color: white;
+    -fx-icon-size: 24;
+}
+
+#AMeditButton .ikonli-font-icon:hover {
+    -fx-icon-color: accent-color;
+}
+

@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="ModularThoughts:jar">
+  <artifact type="jar" build-on-make="true" name="ModularThoughts:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/ModularThoughts_jar</output-path>
     <root id="archive" name="ModularThoughts.jar">
       <element id="module-output" name="ModularThoughts" />
@@ -13,6 +13,14 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19.0.2/javafx-base-19.0.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19.0.2/javafx-controls-19.0.2-win.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: com.dukescript.amaronui.layouts:flexbox:0.5" />
+      <element id="library" level="project" name="Maven: com.dukescript.amaronui.layouts:jfxflexbox:0.5" />
+      <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:3.0.2" />
+      <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.10.1" />
+      <element id="library" level="project" name="Maven: org.apache.commons:commons-collections4:4.4" />
+      <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-core:12.3.1" />
+      <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-javafx:12.3.1" />
+      <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-fontawesome5-pack:12.3.1" />
     </root>
   </artifact>
 </component>

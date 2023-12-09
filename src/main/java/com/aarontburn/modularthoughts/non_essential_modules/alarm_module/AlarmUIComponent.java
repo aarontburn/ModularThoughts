@@ -9,7 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import javax.annotation.Nonnull;
 import java.time.format.DateTimeFormatter;
@@ -18,22 +21,21 @@ import java.time.format.DateTimeFormatter;
 public class AlarmUIComponent extends VBox {
     private static final DateTimeFormatter STANDARD_TIME_FORMATTER = DateTimeFormatter.ofPattern("h:mm a");
     private static final DateTimeFormatter MILITARY_TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
-    static final int MIN_WIDTH = 454;
     private static final int VERTICAL_SPACING = 48;
     private static final int NAME_FONT_SIZE = 40;
     private static final int STANDARD_TIME_FONT_SIZE = 50;
     private static final int MILITARY_TIME_FONT_SIZE = 25;
 
-    protected static final String WEEKDAY_SELECTOR_STYLE
+    protected static final CSSBuilder WEEKDAY_SELECTOR_STYLE
             = new CSSBuilder()
             .setFontSize(24)
             .setBorderColor("white")
             .setBorderRadius(100)
-            .setPadding(7)
-            .build();
+            .setPadding(7);
 
 
     private static final ColumnConstraints WEEKDAY_SELECTOR_CONSTRAINTS = new ColumnConstraints();
+
     static {
         WEEKDAY_SELECTOR_CONSTRAINTS.setPercentWidth(100.0 / Weekday.values().length);
         WEEKDAY_SELECTOR_CONSTRAINTS.setHalignment(HPos.CENTER);
@@ -63,11 +65,22 @@ public class AlarmUIComponent extends VBox {
         final HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER_LEFT);
 
-
         onLabel = CSSBuilder.styleNewLabel("On", new CSSBuilder().setFontSize(24));
         final Label separator = CSSBuilder.styleNewLabel("/", new CSSBuilder().setFontSize(24).setTextFill("accent-color"));
         offLabel = CSSBuilder.styleNewLabel("Off", new CSSBuilder().setFontSize(24));
-        hBox.getChildren().addAll(onLabel, separator, offLabel);
+
+        final Region region = new Region();
+        HBox.setHgrow(region, Priority.ALWAYS);
+
+        final Label editLabel = new Label();
+        editLabel.setGraphic(new FontIcon());
+        editLabel.setId("AMeditButton");
+        editLabel.setOnMousePressed(e -> {
+
+        });
+
+
+        hBox.getChildren().addAll(onLabel, separator, offLabel, region, editLabel);
 
         alarmNameLabel = CSSBuilder.styleNewLabel(alarm.getAlarmName(), new CSSBuilder().setFontSize(NAME_FONT_SIZE));
 
@@ -90,7 +103,7 @@ public class AlarmUIComponent extends VBox {
 
             final Label weekdayLabel = new Label(weekdays[i].getAbbreviation());
             weekdayLabel.setMinSize(50, 50);
-            weekdayLabel.setStyle(WEEKDAY_SELECTOR_STYLE);
+            weekdayLabel.setStyle(WEEKDAY_SELECTOR_STYLE.build());
             weekdayLabel.setAlignment(Pos.CENTER);
             weekdaySelectorGrid.add(weekdayLabel, i, 0);
         }

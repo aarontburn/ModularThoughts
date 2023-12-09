@@ -16,28 +16,37 @@ public class Alarm {
         this.name = theAlarmName;
     }
 
-    public void setAlarmName(@Nonnull final String theName) {
+    public Alarm setAlarmName(@Nonnull final String theName) {
         this.name = theName;
+        return this;
     }
 
     public String getAlarmName() {
         return this.name;
     }
 
-    public void setTime(@Nonnull final LocalTime theTime) {
+    public Alarm setTime(@Nonnull final LocalTime theTime) {
         this.time = theTime;
+        return this;
     }
 
     public LocalTime getTime() {
         return this.time;
     }
 
-    public void addWeekday(@Nonnull final Weekday theWeekday) {
+    public Alarm addWeekday(@Nonnull final Weekday theWeekday) {
         this.activeWeekdays.add(theWeekday);
+        return this;
     }
 
-    public void removeWeekday(@Nonnull final Weekday theWeekday) {
+    public Alarm addWeekdays(final Weekday... theWeekdays) {
+        this.activeWeekdays.addAll(Arrays.asList(theWeekdays));
+        return this;
+    }
+
+    public Alarm removeWeekday(@Nonnull final Weekday theWeekday) {
         this.activeWeekdays.remove(theWeekday);
+        return this;
     }
 
     public List<Weekday> getWeekdays() {
@@ -66,5 +75,10 @@ public class Alarm {
     @Override
     public int hashCode() {
         return Objects.hash(name, time, activeWeekdays);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Alarm [name: %s | time: %s])", name, time);
     }
 }

@@ -372,7 +372,7 @@ public abstract class Setting<T> {
     }
 
     @Override
-    public String toString() {
+    public @Nonnull String toString() {
         return this.settingName + " : " + this.currentValue;
     }
 
@@ -392,6 +392,6 @@ public abstract class Setting<T> {
          * @param theInput The object to parse.
          * @return A valid input as type {@link T}, or null if the input couldn't be parsed.
          */
-        T parseInput(final Object theInput);
+        @Nullable T parseInput(@Nonnull final Object theInput);
     }
 }

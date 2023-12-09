@@ -8,7 +8,20 @@ import java.util.Map;
 
 public class CSSBuilder {
 
+    public static final String ACCENT = "accent-color";
+
     private final Map<String, String> cssMap = new HashMap<>();
+
+
+    public CSSBuilder() {
+
+    }
+
+    public CSSBuilder(final CSSBuilder otherBuilder) {
+        for (final String s : otherBuilder.cssMap.keySet()) {
+            this.cssMap.put(s, otherBuilder.cssMap.get(s));
+        }
+    }
 
     public CSSBuilder setBorderColor(final String s) {
         cssMap.put("-fx-border-color", s);
@@ -35,6 +48,11 @@ public class CSSBuilder {
         return this;
     }
 
+    public CSSBuilder setFill(final String s) {
+        cssMap.put("-fx-fill", s);
+        return this;
+    }
+
     public CSSBuilder setFontSize(final int size) {
         cssMap.put("-fx-font-size", String.valueOf(size));
         return this;
@@ -42,6 +60,11 @@ public class CSSBuilder {
 
     public CSSBuilder setPadding(final double padding) {
         cssMap.put("-fx-padding", String.valueOf(padding));
+        return this;
+    }
+
+    public CSSBuilder setBackgroundColor(final String s) {
+        cssMap.put("-fx-background-color", s);
         return this;
     }
 

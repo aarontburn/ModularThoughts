@@ -3,22 +3,18 @@ package com.aarontburn.modularthoughts.non_essential_modules.alarm_module;
 import com.aarontburn.modularthoughts.module_builder.Module;
 import com.aarontburn.modularthoughts.module_builder.ModuleGUI;
 import com.aarontburn.modularthoughts.module_builder.change_reporter.ModuleEvent;
+
 import com.dukescript.layouts.flexbox.FlexboxLayout;
 import com.dukescript.layouts.jfxflexbox.FlexBoxPane;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.aarontburn.modularthoughts.non_essential_modules.alarm_module.AlarmUIComponent.WEEKDAY_SELECTOR_STYLE;
 
 public class AlarmGUI extends ModuleGUI {
 
@@ -63,20 +59,20 @@ public class AlarmGUI extends ModuleGUI {
         this.newAlarmButton = (Label) lookup("AMnewAlarmButton");
 
         scrollPane = (ScrollPane) lookup("AMscrollpane");
-
-
     }
 
     private void attachEvents() {
         newAlarmButton.setOnMouseClicked(e -> popup.setVisible(true));
+    }
 
-
+    void createNewAlarm(final Alarm theAlarm) {
+        module.createNewAlarm(theAlarm);
     }
 
     @Override
     public void eventFired(final ModuleEvent theEvent) {
         switch (AlarmModule.ChangeEvents.valueOf(theEvent.getEventName())) {
-            case UPDATE_SETTING -> {
+            case UPDATE_ALARMS -> {
                 final Alarm alarm = (Alarm) theEvent.getData();
 
                 boolean found = false;

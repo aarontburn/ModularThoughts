@@ -8,6 +8,11 @@ module com.aarontburn.modularthoughts {
     requires jfxflexbox;
 
 
+    requires org.kordamp.ikonli.core;
+    requires org.kordamp.ikonli.javafx;
+    requires org.kordamp.ikonli.fontawesome5;
+    requires java.logging;
+
     opens com.aarontburn.modularthoughts to javafx.fxml;
     exports com.aarontburn.modularthoughts;
     exports com.aarontburn.modularthoughts.module_builder;
